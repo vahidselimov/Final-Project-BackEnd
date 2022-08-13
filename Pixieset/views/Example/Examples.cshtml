@@ -1,0 +1,249 @@
+﻿<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+          integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+          integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/Products.css">
+    <link rel="stylesheet" href="../assets/css/example.css">
+</head>
+@{
+    ViewData["Title"] = "Examples";
+}
+@model ExampleVM
+<main>
+    <section id="first">
+        <div class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="title">@Model.ExampleFirst.Title</div>
+                    <div class="text">
+                        @Model.ExampleFirst.Text
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <!--Picture-->
+    <section id="picture">
+
+        <div class="container">
+            <div class="row">
+                <div id="tab-menu">
+                    <ul class="menu">
+                        @{
+                            int i = 0;
+                        }
+
+                        @foreach (ExampleMenu menu in @Model.ExampleMenus)
+                        {
+                            i++;
+                            var active = i == 1 ? "active" : "";
+                            <li data-id="@menu.DataId" class="@active">
+                                <div class="image">
+                                    <img src="../assets/images/@menu.Image"
+                                     alt=""><span>@menu.Title</span>
+                                </div>
+                            </li>
+                        }
+
+
+                    </ul>
+                    <div class="body">
+                        <div data-id="1" class="item">
+                            @foreach (ExamplesRow exr in @Model.ExampleRows)
+                            {
+                                <div class="row">
+                                    <div class="image col-lg-4 col-sm-12">
+                                        <img src="../assets/images/@exr.Image"
+                                         alt="">
+                                        <p>
+                                            @exr.Title1
+                                        </p><small>@exr.Small1</small>
+                                    </div>
+
+                                    <div class="image col-lg-4 col-sm-12">
+                                        <img src="../assets/images/@exr.Image2"
+                                         alt="">
+                                        <p>
+                                            @exr.Title2
+                                        </p><small>@exr.Small2</small>
+                                    </div>
+                                    <div class="image col-lg-4 col-sm-12">
+                                        <img src="../assets/images/@exr.Image3"
+                                         alt="">
+                                        <p>
+                                            @exr.Title3
+                                        </p><small>@exr.Small3</small>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div data-id="2" class="item d-none">
+                              @foreach (ExampleActions ex in @Model.ExampleActions)
+                             {
+                                   @if (@ex.Name!=null)
+                                  {
+                                      <div class="titles">
+                                    <h2>@ex.Name</h2>
+                                    <p>@ex.Description</p>
+                                </div>
+                                      
+                                  }
+                                <div class="actions">
+                                    <div class="image col-lg-6 col-md-6 col-sm-12"><a href=""><img
+                                                src="../assets/images/@ex.Image" alt=""></a></div>
+                                    <div class="title col-lg-6 col-md-6 col-sm-12">
+                                        <h3>@ex.Title</h3>
+                                        <p>@ex.Text</p>
+                                        <div class="icons">
+                                     @foreach (ActionsIcons item in @Model.ActionsIcons)
+                                            {
+                                                
+                                                      <a href=""><i class="@item.Icon1"></i><i
+                                                    class="@item.Icon2"></i><span>
+                                                   @item.Span</span></a>
+                                                
+                                            }
+                                    </div>
+                                   
+
+                                </div>
+                                   </div>
+                                <div class="made">
+                                    <div class="rigth">
+                                        <p>@ex.MadeTitle</p>
+                                    </div>
+                                    <div class="images">
+                                        <div class="image col-lg-3 col-md-6 col-sm-12"><a href=""><img
+                                                    src="../assets/images/@ex.MadeImage1" alt="">
+                                                <h5>@ex.MadeImagename1</h5>
+                                            </a>
+                                        </div>
+                                        <div class="image col-lg-3 col-md-6 col-sm-12"><a href=""><img
+                                                    src="../assets/images/@ex.MadeImage2" alt="">
+                                                <h5>@ex.MadeImagename2</h5>
+                                            </a></div>
+                                        <div class="image col-lg-3 col-md-6 col-sm-12"><a href=""><img
+                                                    src="../assets/images/@ex.MadeImage3" alt="">
+                                                <h5>@ex.MadeImagename3</h5>
+                                            </a></div>
+                                        <div class="image col-lg-3 col-md-6 col-sm-12"><a href=""><img
+                                                    src="../assets/images/@ex.MadeImage4" alt="">
+                                                <h5>@ex.MadeImagename4
+
+                                                </h5>
+                                            </a></div>
+                                    </div>
+                                </div> 
+                             }
+
+                        </div>
+                             <div data-id="3" class="item d-none">
+                                <div class="titles">
+                                    <h2>@Model.ExpTitles.Title</h2>
+                                    <p>@Model.ExpTitles.Descrptions</p>
+                                </div>
+                              @foreach (Item item in @Model.Items)
+                             {
+                                   <div class="actions">
+                                    <div class="image col-lg-6 col-md-6 col-sm-12"><a href=""><img
+                                                src="../assets/images/@item.Image" alt=""></a>
+                                    </div>
+                                    <div class="title col-lg-6 col-md-6 col-sm-12">
+                                        <h3>@item.Title</h3>
+                                        <p>@item.Text</p>
+                                        <div class="icons"> 
+                                            @foreach (ActionsIcons item1 in @Model.ActionsIcons)
+                                            {
+                                                
+                                                      <a href=""><i class="@item1.Icon1"></i><i
+                                                    class="@item1.Icon2"></i><span>
+                                                   @item1.Span</span></a>
+                                                
+                                            }
+                                            </div>
+                                    </div>
+
+                                </div>
+                                 
+                             }
+                            </div>
+                             <div data-id="4" class="item d-none">
+                                <div class="act">
+                               @foreach (Act act in @Model.Acts)
+                              {
+                                       <div class="img col-lg-6 col-md-6 col-sm-12"><a href=""><img style="width: 300px;"
+                                                src="../assets/images/@act.Image" alt="">
+                                            <p>@act.Name</p><small>@act.Small</small>
+                                        </a></div>
+                              }
+                                      
+                                </div>
+                            </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!--get-->
+   <section id="get">
+        <div class="get">
+            <div class="container">
+                <div class="row">  
+                    <div class="title">  
+                        <h3> @Model.Get.Title</h3>
+                       
+                    </div>
+                    <div class="text">
+                        <p>@Model.Get.Text</p>
+                        
+                    </div>
+                    <a href="../Html/login.html">@Model.Get.Link</a>
+                 
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+            integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script src="../assets/javascript/products.js"></script>
+    <script src="../assets/javascript/example.js"></script>
+</main>
+
+

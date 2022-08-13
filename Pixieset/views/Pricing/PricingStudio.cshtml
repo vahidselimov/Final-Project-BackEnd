@@ -1,0 +1,735 @@
+﻿<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/Products.css">
+    <link rel="stylesheet" href="../assets/css/pricing.css">
+    @{
+    ViewData["Title"] = "PricingStudio";
+}
+</head>
+@model PricingVM
+<main >
+     <section id="first">
+        <div class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="title">
+                        <h3>@Model.PricingFirst.Title</h3>
+                        <div class="text">
+                            <p>
+                                @Model.PricingFirst.Text
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="picture">
+        <div class="picture">
+            <div class="container">
+                <div class="row">
+                    <div id="tab-menu">
+                        <ul class="menu">
+                            @{
+                                int i = 0;
+                            }
+                            @foreach (PricingMenu menu in @Model.PricingMenu)
+                            {
+
+                                i++;
+                                var active = i == 1 ? "active" : "";
+
+                                <li data-id="@menu.DataId" class="@active">
+                                    <div class="image">
+                                        <img src="../assets/images/@menu.Image"
+                                         alt=""><span>@menu.Name</span>
+                                    </div>
+                                </li>
+                            }
+
+
+
+                        </ul>
+                        <div class="body">
+                            <div data-id="1" class="item">
+                                <div class="table-responsive">
+                                    <table class="table table-striped text-successtable-border border-light">
+                                        <thead class="border-light">
+                                            <tr>
+                                                @{
+                                                    int j = 0;
+                                                }
+
+                                                @foreach (TabHeader tb in @Model.TabHeader)
+                                                {
+                                                    j++;
+                                                    var most = j == 5 ? "most" : "";
+                                                    <th scope="col" class="@most">
+                                                        @if (@tb.Text != null)
+                                                        {
+                                                            <p class="popular">@tb.Text</p>
+                                                        }
+                                                        <strong>@tb.Title</strong>
+                                                    </th>
+                                                }
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                @{
+                                                    int a = 0;
+                                                }
+                                                @foreach (ClientTr cl in @Model.ClientTrs)
+                                                {
+                                                    a++;
+                                                    var most = a == 4 ? "most" : "";
+                                                    if (cl.Name != null)
+                                                    {
+                                                        <th scope="row" class="rows">
+                                                            <h1>@cl.Name</h1>
+                                                        </th>
+                                                    }
+                                                    <td class="@most">
+                                                        <p>@cl.Text</p>
+                                                    </td>
+                                                }
+
+                                            </tr>
+                                            <tr>
+                                                @{
+                                                    int s = 0;
+                                                }
+                                                @foreach (StorgeTr sr in @Model.StorgeTrs)
+                                                {
+                                                    s++;
+                                                    var most = s == 4 ? "most" : "";
+
+                                                    if (sr.Name != null)
+                                                    {
+                                                        <th scope="row">Storage</th>
+
+                                                    }
+                                                    <td class="@most">
+                                                        <p>@sr.Text</p><small>@sr.Small</small>
+                                                    </td>
+                                                }
+                                            </tr>
+                                            <tr>
+                                                @{
+                                                    int v = 0;
+                                                }
+                                                @foreach (VUploadTr vup in @Model.VUploadTrs)
+                                                {
+                                                    v++;
+                                                    var most = v == 4 ? "most" : "";
+                                                    if (@vup.Name != null)
+                                                    {
+                                                        <th scope="row">Video upload</th>
+                                                    }
+                                                    <td class="@most">
+                                                        <p>@vup.Text</p>
+                                                    </td>
+
+                                                }
+                                            </tr>
+
+                                            @foreach (TrName tr in @Model.TrName)
+                                            {
+                                                <tr>
+                                                    <th scope="row">@tr.Name</th>
+                                                    <td>@tr.Title</td>
+                                                    @{
+                                                        int c = 0;
+                                                    }
+                                                    @foreach (TrIcons icon in @Model.TrIcons)
+                                                    {
+                                                        c++;
+                                                        var most = c == 3 ? "most" : "";
+                                                        if (icon.CIconsId != null)
+                                                        {
+                                                            <td class="@most"><i class="@icon.IconsName"></i></td>
+                                                        }
+                                                    }
+                                                </tr>
+                                            }
+
+                                            <tr>
+                                                <th scope="row">
+                                                    <h1>Store</h1>
+                                                </th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="most"></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>`
+                                                @{
+                                                    int cf = 0;
+                                                }
+                                                @foreach (Commission_feeTr cfr in @Model.CommissionFeeTrs)
+                                                {
+                                                    cf++;
+                                                    var most = cf == 4 ? "most" : "";
+
+                                                    if (@cfr.Name != null)
+                                                    {
+                                                        <td>@cfr.Name</td>
+                                                    }
+                                                    <td class="fw-bold @most">@cfr.Text</td>
+                                                }
+                                            </tr>
+                                            @foreach (CIcons cIcons in @Model.CIcons)
+                                            {
+                                                <tr>
+                                                    <th scope="row">@cIcons.Name</th>
+                                                    @{
+                                                        int icon = 0;
+                                                    }
+                                                    @foreach (TrIcons trIcons in @Model.TrIcons)
+                                                    {
+                                                        icon++;
+                                                        var most = icon == 4 ? "most" : "";
+                                                        <td class="@most"><i class="@trIcons.IconsName"></i></td>
+                                                    }
+                                                </tr>
+                                            }
+                                            <tr>
+                                                <th scope="row">
+                                                    <h1>MOBILE GALLERY APP</h1>
+                                                </th>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td class="most"></td>
+                                                <td></td>
+                                            </tr>
+                                            <tr>
+                                                @{
+                                                    int mobile = 0;
+                                                }
+                                                @foreach (Mobileapp mobileapp in @Model.Mobileapp)
+                                                {
+                                                    mobile++;
+                                                    var most = mobile == 4 ? "most" : "";
+                                                    @if (mobileapp.Name != null)
+                                                    {
+                                                        <th scope="row">@mobileapp.Name</th>
+                                                    }
+                                                    <td class="@most">
+                                                        <p>@mobileapp.Text</p>
+                                                    </td>
+                                                }
+
+
+                                            </tr>
+                                            @foreach (CDR cdr in @Model.CDRs)
+                                            {
+                                                <tr>
+                                                    <th scope="row">@cdr.Name</th>
+                                                    <td>@cdr.Text</td>
+                                                    @{
+                                                        int td = 0;
+                                                    }
+                                                    @foreach (TrIcons tr in @Model.TrIcons)
+                                                    {
+                                                        td++;
+                                                        var most = td == 3 ? "most" : "";
+                                                        if (tr.CIcons != null)
+                                                        {
+                                                            <td class="@most"><i class="fas fa-check"></i></td>
+                                                        }
+                                                    }
+
+                                                </tr>
+                                            }
+
+                                            <tr>
+                                                <th class=""></th>
+                                                @{
+                                                    int btn = 0;
+                                                }
+                                                @foreach (ThBtn thBtn in @Model.ThBtn)
+                                                {
+                                                    btn++;
+                                                    var most = btn == 4 ? "most" : "";
+                                                    <th class="@most">
+                                                        <button onclick="location.href='payment.html'"
+                                                            class="btn @thBtn.Class">
+                                                            @thBtn.Name
+                                                        </button>
+                                                    </th>
+                                                }
+
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <div data-id="2" class="item d-none">
+                                <div class="table-responsive">
+                                    <table class="table table-striped text-successtable-border border-light">
+                                        <thead class="border-light">
+                                            <tr>
+
+                                                @foreach (Cols cols in @Model.Cols)
+                                                {
+                                                    <th scope="col"><strong>@cols.Name</strong></th>
+                                                }
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                @foreach (Client cl in @Model.Clients)
+                                                {
+                                                    @if (cl.Name != null)
+                                                    {
+                                                        <th scope="row" class="rows">
+                                                            <h1>@cl.Name</h1>
+                                                        </th>
+                                                    }
+
+                                                    <td>
+                                                        <p>@cl.Text</p>
+                                                    </td>
+                                                }
+
+
+                                            </tr>
+                                            @foreach (Pages pages in @Model.Pages)
+                                            {
+                                                <tr>
+                                                    <th scope="row">@pages.Name</th>
+                                                    <td>
+                                                        <p>@pages.Text</p>
+                                                    </td>
+                                                    <td>
+                                                        <p>@pages.Text2</p>
+                                                    </td>
+                                                    <td>
+                                                        <p>@pages.Text3</p>
+                                                    </td>
+                                                </tr>
+                                            }
+
+
+
+                                            @foreach (WebsiteNameTr nameTr in @Model.WebsiteNames)
+                                            {
+                                                <tr>
+                                                    <th scope="row">@nameTr.Name</th>
+
+                                                    @foreach (WebsiteIconsTr iconsTr in @Model.WebsitesIcons)
+                                                    {
+
+                                                        <td><i class="@iconsTr.Name"></i></td>
+                                                    }
+
+                                                </tr>
+
+                                            }
+
+                                            @foreach (WebsiteDomTr website in @Model.WebsitesDomTrs)
+                                            {
+                                                <tr>
+                                                    <th scope="row">@website.Name</th>
+
+                                                    <td>
+                                                        <p>@website.Text</p>
+                                                    </td>
+                                                    @if (website.Text2 != null)
+                                                    {
+                                                        <td>
+                                                            <p>-</p>
+                                                        </td>
+                                                    }
+                                                    @foreach (WebsiteIconsTr wb in @Model.WebsitesIcons)
+                                                    {
+                                                        @if (website.Text2 == null && wb.WebsiteDomId != null)
+                                                        {
+                                                            <td><i class="@wb.Name"></i></td>
+
+
+                                                        }
+                                                        @if (wb.WebsiteDomId != null)
+                                                        {
+                                                            <td><i class="@wb.Name"></i></td>
+                                                        }
+
+
+                                                    }
+                                                </tr>
+                                            }
+
+
+
+                                            <tr>
+
+
+                                            <tr>
+                                                <th class=""></th>
+
+
+
+
+                                                    @foreach (ThBtn btn1 in @Model.ThBtn)
+                                                    {
+
+
+                                                        if (@btn1.Id < 4)
+                                                        {
+                                                        <th class="">
+                                                            <button onclick="location.href='payment.html'"
+                                                            class="btn @btn1.Class">
+                                                                    @btn1.Name
+                                                            </button>
+                                                        </th>
+                                                        }
+
+
+                                                    }
+
+
+
+
+
+                                            </tr>
+
+
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div data-id="3" class="item d-none">
+                                <div class="table-responsive">
+                                    <table class="table table-striped text-successtable-border border-light">
+                                        <thead class="border-light">
+                                            <tr>
+                                                @foreach (Cols cols1 in @Model.Cols)
+                                                {
+                                                    @if (cols1.Id < 4)
+                                                    {
+
+                                                        <th scope="col"><strong>@cols1.Name</strong></th>
+
+                                                    }
+
+                                                }
+
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                @foreach (STTRcs sTT in @Model.STTRcs)
+                                                {
+                                                    @if (@sTT.Name != null)
+                                                    {
+                                                        <th scope="row" class="rows">
+                                                            <h1>@sTT.Name</h1>
+                                                        </th>
+
+                                                    }
+                                                    <td>
+                                                        <p>@sTT.Text</p>
+                                                    </td>
+
+                                                }
+                                            </tr>
+                                            @foreach (STName sT in @Model.STNames)
+                                            {
+                                                <tr>
+                                                    <th scope="row">Invoices</th>
+
+                                                    @foreach (StText text in @Model.StTexts)
+                                                    {
+                                                        <td>
+                                                            <p>@text.Text</p>
+                                                        </td>
+                                                    }
+
+
+                                                </tr>
+                                            }
+
+                                            @foreach (StIcons stIcons in @Model.StIcons)
+                                            {
+                                                <tr>
+                                                    <th scope="row">@stIcons.Name</th>
+
+                                                    @if (@stIcons.Text != null)
+                                                    {
+                                                        <td>
+                                                            <p>-</p>
+                                                        </td>
+                                                    }
+                                                    @if (@stIcons.Icon1 != null)
+                                                    {
+                                                        <td><i class="@stIcons.Icon1"></i></td>
+                                                    }
+                                                    <td><i class="@stIcons.Icon2"></i></td>
+                                                </tr>
+                                            }
+
+                                            <tr>
+                                                <th class=""></th>
+
+                                                @foreach (ThBtn btn2 in @Model.ThBtn)
+                                                {
+                                                    @if (@btn2.Id < 3)
+                                                    {
+                                                        <th class="">
+                                                            <button onclick="location.href='payment.html'"
+                                                            class="btn @btn2.Class">
+                                                                @btn2.Name
+                                                            </button>
+                                                        </th>
+                                                    }
+                                                }
+
+
+
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div data-id="4" class="item d-none">
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="pixt">
+                                            <div class="title">
+                                                <h3>@Model.SuiteTitle.Title</h3>
+                                                <p>@Model.SuiteTitle.Text</p>
+
+                                            </div>
+
+                                            <div class="image">
+                                                @foreach (SuiteImage image in @Model.SuiteImages)
+                                                {
+
+                                                    <img src="../assets/images/@image.Image"
+                                                     alt="">
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped text-successtable-border border-light">
+                                        <thead class="border-light">
+                                            <tr>
+                                                @{
+                                                    int col = 0;
+                                                }
+                                                @foreach (SuiteCols suiteCols in @Model.SuiteCols)
+                                                {
+                                                    col++;
+                                                    var most = col == 2 ? "most" : "";
+                                                    @if (@suiteCols.Name != null)
+                                                    {
+                                                        <th scope="col">@suiteCols.Name</th>
+                                                    }
+
+                                                    <th scope="col" class="@most">
+                                                        @if (@suiteCols.Description != null)
+                                                        {
+                                                            <p class="popular">@suiteCols.Description</p>
+                                                        }<strong>@suiteCols.Title</strong>
+                                                    </th>
+
+                                                }
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+
+                                                @{
+                                                    int suites = 0;
+                                                }
+                                                @foreach (ClientSuite suite in @Model.ClientSuite)
+                                                {
+                                                    @if (@suite.Name != null)
+                                                    {
+                                                        <th scope="row" class="rows">
+                                                            <h1>@suite.Name</h1>
+                                                        </th>
+
+                                                    }
+                                                    suites++;
+                                                    var most = suites == 1 ? "most" : "";
+
+
+                                                    <td class="@most">
+                                                        <p>@suite.Text</p>
+                                                    </td>
+                                                }
+
+                                            </tr>
+                                            @{
+                                                int strs = 0;
+
+                                            }
+                                            @foreach (SuiteStr str in @Model.SuiteStrs)
+                                            {
+                                                strs++;
+
+                                                var most = strs == @str.Id ? "most" : "";
+
+                                                <tr>
+                                                    <th scope="row">@str.Name</th>
+
+                                                    <td class="@most">
+                                                        <p>@str.Title</p>
+                                                    </td>
+                                                    <td>
+                                                        <p>@str.Description</p>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            @{
+                                                int icons = 0;
+                                            }
+                                            @foreach (SuiteIcons suiteIcons in @Model.SuiteIcons)
+                                            {
+                                                icons++;
+                                                var most = icons == @suiteIcons.Id ? "most" : "";
+                                                <tr>
+                                                    <th scope="row">@suiteIcons.Name</th>
+
+                                                    <td class="@most"><i class="@suiteIcons.Icons1"></i></td>
+                                                    <td><i class="@suiteIcons.Icons2"></i></td>
+                                                </tr>
+
+                                            }
+
+
+                                            <tr>
+                                                <th class=""></th>
+                                                @{
+                                                    int bt = 0;
+                                                }
+                                                @foreach (ThBtn btn3 in @Model.ThBtn)
+                                                {
+                                                    bt++;
+                                                    var most = bt == 1 ? "most" : "";
+                                                    @if (@btn3.Id < 3)
+
+                                                    {
+                                                        <th class="@most">
+                                                            <button onclick="location.href='payment.html'"
+                                                            class="btn @btn3.Class">
+                                                                @btn3.Name
+                                                            </button>
+                                                        </th>
+                                                    }
+                                                }
+
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+      <section id="title">
+        <div class="titles">
+            <div class="container">
+                <div class="row">
+                    <div class="view">
+                        <a asp-controller="Pricing" asp-action="Pricings">@Model.PricingView.Link <i class="@Model.PricingView.Icons"></i></a>
+                        <h3>@Model.PricingView.Title</h3>
+                        <p>@Model.PricingView.Text</p>
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+            <div class="frequently">
+                @foreach (PricingFrequently prc in @Model.PricingFrequently)
+                {
+                    @if (@prc.Title != null)
+                    {
+                        <h2>@prc.Title</h2>
+                    }
+                }
+                    <div class="container">
+                        <div class="row">
+
+                            @foreach (PricingFrequently pricing in @Model.PricingFrequently)
+                            {
+                                <div class="text col-lg-6">
+                                    <h3>
+                                        @pricing.Text1
+                                    </h3>
+                                    <p>
+                                        @pricing.Text2
+                                    </p>
+                                </div>
+                            }
+                        </div>
+
+
+                    </div>
+                
+            </div>
+        </div>
+
+    </section>
+      <section id="get">
+        <div class="get">
+            <div class="container">
+                <div class="row">  
+                    <div class="title">  
+                        <h3> @Model.Get.Title</h3>
+                       
+                    </div>
+                    <div class="text">
+                        <p>@Model.Get.Text</p>
+                        
+                    </div>
+                    <a href="../Html/login.html">@Model.Get.Link</a>
+                 
+                </div>
+            </div>
+        </div>
+    </section>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.4.0/mdb.min.js"></script>
+    <script src="../assets/javascript/products.js"></script>
+    <script src="../assets/javascript/pricing.js"></script>
+</main>
+
+
+

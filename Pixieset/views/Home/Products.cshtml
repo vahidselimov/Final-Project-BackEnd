@@ -1,0 +1,342 @@
+﻿<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+        integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+        integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/Products.css">
+</head>
+@model HomeVM
+@*@{
+    ViewData["Title"] = "Examples";
+}*@
+<main>
+  <!--First-->
+        <section id="first">
+            <div class="text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="title">@Model.ProductFirst.Title</div>
+                        <div class="text">@Model.ProductFirst.Text
+                            
+                        </div>
+
+                    </div>
+                    <div class="btn"><a href="../Html/login.html">@Model.ProductFirst.Link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="image"><a href=""><img src="../assets/images/@Model.ProductFirst.Image" alt=""></a></div>
+        </section>
+
+    <!--Social media -->
+    <section id="socialmedias">
+        <div class="sharing">
+            <div class="container">
+                <div class="row">
+                    <div class="title">
+                        <h5>@Model.SocialMedias.Title</h5>
+                    </div>
+                    <div class="text">
+                        <h3>@Model.SocialMedias.Text</h3>
+                    </div>
+                    <div class="right">
+                        <h5>
+                            @Model.SocialMedias.Right
+                        </h5>
+                    </div>
+                    <div class="image"><img src="../assets/images/@Model.SocialMedias.Image" alt=""></div>
+                    <div class="feture">
+                        <div class="images1">
+                            <span>
+                                <i class="@Model.SocialMedias.Icon1"></i>@Model.SocialMedias.Span1
+                            </span>
+                        </div>
+                        <div class="images2"><span><i class="@Model.SocialMedias.Icon2"></i>@Model.SocialMedias.Span2</span></div>
+                        <div class="images3">
+                            <span>
+                                <div class="socialicons">
+                                    @foreach (SocialIcons icons in @Model.SocialIcons)
+                                    {
+                                        <a href=""><i class="@icons.Icons"></i></a>
+                                    }
+                                    @Model.SocialMedias.Span3
+                                </div>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <!--Workflow-->
+    <section id="flow">
+        <div class="work col-lg-12 col-md-12 col-sm-12">
+            <div class="container">
+                <div class="row">
+                    <div class="title col-lg-12 col-md-12 col-sm-12 ">
+                        <h5>@Model.Flow.FlowTitle</h5>
+                    </div>
+                    <div class="rigth col-lg-12 col-md-12 col-sm-12">
+                        <h3>@Model.Flow.FlowRight</h3>
+                    </div>
+                    <div class="text col-lg-12 col-md-12">
+                        <p>
+                            @Model.Flow.FlowText
+                        </p>
+                    </div>
+                    <div class="image col-lg-12 col-md-12 col-sm-12">
+                        <img src="../assets/images/@Model.Flow.FlowImage" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!--Digital-->
+    <section id="digital">
+        <div class="download">
+            <div class="container">
+                <div class="row">
+                    <div data-aos="fade-right" data-aos-delay="600" class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="download-image ">
+                            <img src="../assets/images/@Model.Digital.RightImage" alt="">
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="600" class="col-lg-6 col-sm-6 col-md-6">
+                        <div class="cards">
+                            <div class="text">
+                                <h2>@Model.Digital.LeftText</h2>
+                                <h3>@Model.Digital.LeftText2 <span>@Model.Digital.LeftSpan</span></h3>
+                                <p>
+                                    @Model.Digital.LeftText3
+                                </p>
+                            </div>
+                            <div class="list">
+                                <ul>
+                                    <li><i class="@Model.Digital.Icons"></i>@Model.Digital.Leftli1 </li>
+                                    <li><i class="@Model.Digital.Icons"></i>@Model.Digital.Leftli2</li>
+                                </ul>
+                                <ul>
+                                    <li><i class="@Model.Digital.Icons"></i>@Model.Digital.Leftli3</li>
+                                    <li><i class="@Model.Digital.Icons"></i>@Model.Digital.Leftli4</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-right" data-aos-delay="600" class="col-lg-6 col-sm-6 col-md-6">
+                        <div class="cards">
+                            <div class="text">
+                                <h2>@Model.Digital.RightText</h2>
+                                <h3><span>@Model.Digital.RightSpan</span>  @Model.Digital.RightText2</h3>
+                                <p>
+                                    @Model.Digital.RightText3
+                                </p>
+                            </div>
+                            <div class="list">
+                                <ul>
+                                    <li>@Model.Digital.Rightli1<i class="@Model.Digital.Icons"></i></li>
+                                    <li>@Model.Digital.Rightli2<i class="@Model.Digital.Icons"></i></li>
+                                </ul>
+                                <ul>
+                                    <li>@Model.Digital.Rightli3<i class="@Model.Digital.Icons"></i></li>
+                                    <li>
+                                        @Model.Digital.Rightli4<i class="@Model.Digital.Icons"></i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left" data-aos-delay="600" class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="download-image ">
+                            <img src="../assets/images/@Model.Digital.LeftImage" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="store">
+        <div class="container">
+            <div class="row">
+                <div class="first col-lg-12 col-md-12 col-sm-12">
+                    <div class="flex">
+                        <img src="../assets/images/@Model.Store.Image1" alt="">
+                        <h2>@Model.Store.Name</h2>
+                    </div>
+                    <div class="print">
+                        <h2>@Model.Store.Title</h2>
+                        <p>@Model.Store.Text</p>
+                        <a href="">@Model.Store.Link <i class="@Model.Store.Icon"></i> </a>
+                    </div>
+                </div>
+                <div class="learn">
+                    <div class="set col-lg-4 col-md-4 col-sm-12">
+                        <div class="image"><img src="../assets/images/@Model.Store.Image2" alt=""></div>
+                        <h3>@Model.Store.Title2</h3>
+                        <p>@Model.Store.Text2</p>
+                    </div>
+                    <div class="commission col-lg-4 col-md-4 col-sm-12">
+                        <div class="image"><img src="../assets/images/@Model.Store.Image3" alt=""></div>
+                        <h3>@Model.Store.Title3</h3>
+                        <p>@Model.Store.Text3</p>
+                    </div>
+                    <div class="your col-lg-4 col-md-4 col-sm-12">
+                        <div class="image"><img src="../assets/images/@Model.Store.Image4" alt=""></div>
+                        <h3>@Model.Store.Title4</h3>
+                        <p>@Model.Store.Text4</p>
+                    </div>
+                </div>
+                <div class="big-image col-lg-10 col-md-10 col-sm-12">
+                    <img src="../assets/images/@Model.Store.Image5" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Slider-->
+    <section id="slider">
+        <div class="container">
+            <div class="row">
+                <div class="title">
+
+
+
+
+                    @foreach (Slider slider in @Model.Sliders)
+                    {
+                        if (@slider.Name != null)
+                        {
+                            <h3>@slider.Name</h3>
+                        }
+
+
+                    }
+
+
+
+                </div>
+     
+                <div class="slider">
+                    @foreach (Slider slider in @Model.Sliders)
+                    {
+                        <div class="titles col-md-4 col-sm-12 ">
+                            <div class="sl col-lg-5 col-md-4 col-sm-12 ">
+                                <p class="quate">@slider.Text1</p>
+                                <div class="autor">
+                                    <img src="../assets/images/@slider.Image" alt="">
+                                    <p>@slider.Text2 <br> <small>@slider.Small</small></p>
+                                </div>
+                            </div>
+                            <div class="sl col-lg-5 col-md-4 col-sm-12 ">
+                                <p class="quate">@slider.Text3</p>
+                                <div class="autor">
+                                    <img src="../assets/images/@slider.Image2" alt="">
+                                    <p>@slider.Text4 <br> <small>@slider.Small</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    
+
+                </div>
+                
+            </div>
+        </div>
+    </section>
+    <section id="cards">
+        <div class="container">
+            <div class="row">
+                <div class="title">
+                   @foreach (Cards cards1 in @Model.Cards)
+                  {
+                      @if (cards1.Name!=null)
+                     {
+                          <h3>@cards1.Name </h3>
+                     }
+                       
+                  }
+                </div>
+               @foreach (Cards cards in @Model.Cards)
+              {
+                   <div class="card col-lg-4 col-md-6  col-sm-12">
+                    <div class="product">
+                        <a href="">
+                            <div class="image">
+                                <img src="../assets/images/@cards.Image"
+                                     alt=""><span>@cards.Span</span>
+                            </div>
+                            <div class="text">
+                                <p>
+                                   @cards.Text
+                                </p>
+                            </div>
+                            <div class="learn">
+                               <h5>@cards.Title <i class="@cards.Icons"></i></h5>
+                            </div>
+                        </a>
+                    </div>   
+                </div>    
+              }
+              
+                
+            </div>
+        </div>
+    </section>
+    <section id="get">
+        <div class="get">
+            <div class="container">
+                <div class="row">  
+                    <div class="title">  
+                        <h3> @Model.Get.Title</h3>
+                       
+                    </div>
+                    <div class="text">
+                        <p>@Model.Get.Text</p>
+                        
+                    </div>
+                    <a href="../Html/login.html">@Model.Get.Link</a>
+                 
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+        integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <script src="../assets/javascript/products.js"></script>
+
+

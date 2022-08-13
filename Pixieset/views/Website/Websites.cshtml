@@ -1,0 +1,267 @@
+﻿<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   @{
+    ViewData["Title"] = "Websites";
+}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../assets/css/website.css">
+</head>
+@model WebsiteVM
+ <main>
+        <section id="first">
+            <div class="studio">
+                <div class="container">
+                    <div class="row">
+                        <div class="titles col-lg-6">
+                            <div class="image"><img src="../assets/images/@Model.WebsiteFirst.Webimage" alt="">
+                                <p>@Model.WebsiteFirst.Name</p>
+
+                            </div>
+                            <div class="title">
+                                <h3>@Model.WebsiteFirst.Title</h3>
+                                <p>@Model.WebsiteFirst.Text
+                                </p><a href="../Html/login.html">@Model.WebsiteFirst.Link</a>
+                            </div>
+                        </div>
+                        <div class="images col-lg-6"><img src="../assets/images/@Model.WebsiteFirst.Image" alt=""></div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="slider">
+            <div class="titles">
+                <h2>@Model.WebSliderTitle.Description</h2>
+                <h3>@Model.WebSliderTitle.Title</h3>
+                <p>@Model.WebSliderTitle.Text</p>
+            </div>
+            <div class="slider">
+                <div class="owl-carousel owl-theme">
+                    @foreach (WebSlider webSlider in @Model.WebSliders)
+                   {
+                       <div class="item"><img src="../assets/images/sliderimage/@webSlider.Image" alt="">
+                    </div>
+                   }
+                  
+                </div>
+            </div>
+        </section>
+        <section id="builder">
+            <div class="builder">
+                <div class="container">
+                    <div class="row">
+                        <div class="title">
+                            <h2>@Model.WebBuilder.Description</h2>
+                            <h3>@Model.WebBuilder.Title</h3>
+                            <p>@Model.WebBuilder.Text.</p>
+                        </div>
+                        <div class="image"><img src="../assets/images/@Model.WebBuilder.BigImage" alt="">
+                            <div class="img1"><img src="../assets/images/@Model.WebBuilder.MiniImage1" alt=""></div>
+                            <div class="img2"><img src="../assets/images/@Model.WebBuilder.MiniImage2" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="icons">
+            <div class="icons">
+                <div class="container">
+                    <div class="row">
+                       @foreach (WebIcons icons in @Model.WebIcons)
+                      {
+                           <div class="titles col-lg-6"><i class="@icons.Icon"></i>
+                            <h3>@icons.Title</h3>
+                            <p>@icons.Text</p>
+                        </div>
+                      }
+                      
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="tools">
+            <div class="tool">
+                <div class="container">
+                    <div class="row">
+                        <div class="titles col-lg-6 col-md-4 col-sm-12">
+                            <h2>@Model.WebTool.Description1</h2>
+                            <h3>@Model.WebTool.Title1</h3>
+                            <p>@Model.WebTool.Text1</p>
+                        </div>
+                        <div class="images col-lg-6 col-md-4 col-sm-12"><img src="../assets/images/@Model.WebTool.Image1"
+                                alt=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tool">
+                <div class="container">
+                    <div class="row">
+                        <div class="images col-lg-6 col-md-4 col-sm-12"><img src="../assets/images/@Model.WebTool.Image2"
+                                alt=""></div>
+                        <div class="titles col-lg-6 col-md-4 col-sm-12">
+                            <h2>@Model.WebTool.Description2</h2>
+                            <h3>@Model.WebTool.Title2</h3>
+                            <p>@Model.WebTool.Tex2t</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section id="management">
+            <div class="management">
+                <div class="container">
+                    <div class="row">
+                        <div class="title">
+                            <h3>MANAGEMENT</h3>
+                            <p>Let Us Handle the Technical Stuff</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="icons col-lg-4"><i class="fa-solid fa-server"></i>
+                            <h3>Free Unlimited Hosting</h3>
+                            <p>Enjoy reliable and scalable hosting with Pixieset's free web hosting service. We place no
+                                limits on your site’s bandwidth whatsoever.</p>
+                        </div>
+                        <div class="icons col-lg-4"><i class="fa-solid fa-circle-check"></i>
+                            <h3>SSL Certificate Includeds</h3>
+                            <p>Every Pixieset website comes with a free SSL certificate, which we create and renew for
+                                you automatically.</p>
+                        </div>
+                        <div class="icons col-lg-4"><i class="fa-solid fa-gauge-simple-high"></i>
+                            <h3>Fast Content Delivery</h3>
+                            <p>All your web content and photos are delivered using a global CDN. So no matter where your
+                                visitors come from, your pages will load fast..</p>
+                        </div>
+                        <div class="icons col-lg-4"><i class="fa-solid fa-lock"></i>
+                            <h3>Built-in Security</h3>
+                            <p>Pixieset websites have no security patches to install or software to update. Your site is
+                                always protected from malware and secured from start to finish.</p>
+                        </div>
+                        <div class="icons col-lg-4"><i class="fa-solid fa-signal"></i>
+                            <h3>Enterprise-grade Uptime</h3>
+                            <p>We use the world’s most sophisticated vendors to provide you with superior uptime. Your
+                                website uses the same technology as some of the internet’s top websites.</p>
+                        </div>
+                        <div class="icons col-lg-4"><i class="fa-solid fa-list-check"></i>
+                            <h3>Fully Managed Operations</h3>
+                            <p>Pixieset websites are constantly monitored from locations globally. Our engineers are
+                                ready to respond within minutes of detecting any unexpected issues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="profile">
+            <div class="profile">
+                <div class="container">
+                    <div class="row">
+                        <div class="titles col-lg-6"><i class="fa-solid fa-quote-left"></i>
+                            <p>I have to say Pixieset is</p><strong>the most versatile and simplest website builder I’ve
+                                used.</strong>
+                            <p> I love having a website, and I don’t think I will ever switch to any other platform!</p>
+                            <i class="fa-solid fa-quote-right"></i>
+                            <div class="name">
+                                <h5>Ashley Martinez</h5><a href="">Ginger Snap Studios</a>
+                            </div>
+                        </div>
+                        <div class="image col-lg-6"><img src="../assets/images/website-user-testimonial.jpg" alt=""></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="cards">
+            <div class="container">
+                <div class="row">
+                    <div class="title">
+                        <h3>See More from Pixieset</h3>
+                    </div>
+                    <div class="card col-lg-4 col-md-6  col-sm-12">
+                        <div class="product"><a href="">
+                                <div class="image"><img src="../assets/images/product-website.png"
+                                        alt=""><span>Website</span>
+                                </div>
+                                <div class="text">
+                                    <p>The easy and fun way to build a stunning photography website, portfolio or blog.
+                                    </p>
+                                </div>
+                                <div class="learn">
+                                    <h5>Learn More <i class="fa-solid fa-arrow-right-long"></i></h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card col-lg-4 col-md-6 col-sm-12">
+                        <div class="product"><a href="">
+                                <div class="image"><img src="../assets/images/product-studio-manager.png"
+                                        alt=""><span>Studio Manager</span>
+                                </div>
+                                <div class="text">
+                                    <p>The easy and fun way to build a stunning photography website, portfolio or blog.
+                                    </p>
+                                </div>
+                                <div class="learn">
+                                    <h5>Learn More <i class="fa-solid fa-arrow-right-long"></i></h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card col-lg-4 col-md-6 col-sm-12">
+                        <div class="product"><a href="">
+                                <div class="image"><img src="../assets/images/product-store.png"
+                                        alt=""><span>Store</span>
+                                </div>
+                                <div class="text">
+                                    <p>The easy and fun way to build a stunning photography website, portfolio or blog.
+                                    </p>
+                                </div>
+                                <div class="learn">
+                                    <h5>Learn More <i class="fa-solid fa-arrow-right-long"></i></h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="get">
+            <div class="get">
+                <div class="container">
+                    <div class="row">
+                        <div class="title">
+                            <h3>Get Started with Pixieset Today</h3>
+                        </div>
+                        <div class="text">
+                            <p>Free forever. Upgrade when you need to.</p>
+                        </div>
+                        <a href="../Html/login.html">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../assets/javascript/products.js"></script>
+    <script src="../assets/javascript/website.js"></script>
+
+
