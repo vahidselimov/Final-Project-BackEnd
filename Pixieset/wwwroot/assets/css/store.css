@@ -19,7 +19,6 @@ body header {
   width: 110%;
   height: 700px;
   background-repeat: no-repeat;
-  position: relative;
   background-size: cover;
   background-position: center 90%;
   background-attachment: fixed;
@@ -112,7 +111,6 @@ body .header .menu > .menu-item > .sub-menu > .menu-item > a:hover {
   color: #222222;
 }
 body .header .menu > .menu-item > .sub-menu {
-  z-index: 100;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   width: 420px;
   position: absolute;
@@ -125,6 +123,7 @@ body .header .menu > .menu-item > .sub-menu {
   transition: all 0.5s ease;
   opacity: 0;
   visibility: hidden;
+  z-index: 100;
 }
 body .header .menu > .menu-item > .sub-menu > .menu-item {
   display: block;
@@ -359,22 +358,29 @@ body .menu-item.signup {
   min-width: 90px;
   text-align: center;
 }
-body #first {
+
+main #first {
   margin-top: 10%;
   margin-left: 10%;
 }
-body #first .studio {
+main #first .studio {
+  position: absolute;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  top: 30%;
+  left: 7%;
+}
+main #first .studio .titles .image {
   display: flex;
 }
-body #first .studio .titles .image {
-  display: flex;
-}
-body #first .studio .titles .image img {
+main #first .studio .titles .image img {
   height: 30px;
   width: 30px;
   margin: 0 15px 0 0;
 }
-body #first .studio .titles .image p {
+main #first .studio .titles .image p {
   font-family: proxima-nova, Lato, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 13px;
   font-weight: 700;
@@ -382,7 +388,7 @@ body #first .studio .titles .image p {
   line-height: 19.5px;
   text-align: left;
 }
-body #first .studio .titles .image span {
+main #first .studio .titles .image span {
   font-family: proxima-nova, Lato, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 10px;
   font-weight: 700;
@@ -398,7 +404,7 @@ body #first .studio .titles .image span {
   border-radius: 15px;
   opacity: 70%;
 }
-body #first .studio .titles .title h3 {
+main #first .studio .titles .title h3 {
   font-family: proxima-nova, Lato, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 40px;
   line-height: 50px;
@@ -408,7 +414,7 @@ body #first .studio .titles .title h3 {
   word-spacing: 0px;
   margin: 20px 0 0 0;
 }
-body #first .studio .titles .title p {
+main #first .studio .titles .title p {
   font-family: adobe-garamond-pro, Garamond, Georgia, serif;
   font-size: 18px;
   line-height: 30.42px;
@@ -420,7 +426,7 @@ body #first .studio .titles .title p {
   height: 61px;
   width: 410px;
 }
-body #first .studio .titles .title a {
+main #first .studio .titles .title a {
   font-family: proxima-nova, Lato, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   background-color: #1ABC9C;
   height: 43.5px;
@@ -434,12 +440,11 @@ body #first .studio .titles .title a {
   color: #fff;
   text-align: left;
 }
-body #first .studio .images img {
+main #first .studio .images img {
   height: 464px;
   width: 780px;
   margin-top: -10%;
 }
-
 main #auto .auto {
   padding: 80px 15px 100px 15px;
 }

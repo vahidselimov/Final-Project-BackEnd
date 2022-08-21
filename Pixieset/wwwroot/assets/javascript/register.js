@@ -62,3 +62,12 @@ function togglePassInput(e) {
         passInput.style.background = "#112d37";
     }
 }
+function change() {
+    var change = document.getElementById("form2Example3cg");
+    if (change.value == "false") {
+      document.test.elements["savereport"].value = "True";
+      //document.test.submit();
+    } else {
+      change.value = "true";
+    }
+  }

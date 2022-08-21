@@ -1,0 +1,81 @@
+﻿<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/Products.css">
+    <link rel="stylesheet" href="../assets/css/plugins.css">
+    @{
+    ViewData["Title"] = "Plugin";
+}
+@model PluginsVM
+</head>
+   <main>
+        <section id="first">
+            <div class="title">
+                <h3>@Model.PluginFirst.Title</h3>
+            </div>
+        </section>
+        <section id="stream">
+            <div class="container">
+                <div class="row">
+                    <div class="title">
+                        <h3>@Model.PluginStream.Title</h3>
+                        <p>@Model.PluginStream.Text</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="light">
+            <div class="container">
+                <div class="row">
+                    <div class="title col-lg-7">
+                        <h3>@Model.PluginsLight.Title</h3>
+                        <p>@Model.PluginsLight.Description</p>
+                        <a href="">
+                            <h5>@Model.PluginsLight.Tag<i class="@Model.PluginsLight.Icon"></i></h5>
+                        </a>
+                        <a href="" class="btn">@Model.PluginsLight.Btn</a>
+                    </div>
+                    <div class="image col-lg-5"><img src="../assets/images/@Model.PluginsLight.Image" alt=""></div>
+                </div>
+            </div>
+        </section>
+         <section id="get">
+        <div class="get">
+            <div class="container">
+                <div class="row">
+                    <div class="title">
+                        <h3> @Model.Get.Title</h3>
+
+                    </div>
+                    <div class="text">
+                        <p>@Model.Get.Text</p>
+
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                   {
+                        <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
+
+                    }
+                    else
+                    {
+                          <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+    integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../assets/javascript/products.js"></script>
+
+
+
+

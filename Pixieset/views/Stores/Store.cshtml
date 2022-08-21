@@ -1,0 +1,229 @@
+﻿
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   @{
+    ViewData["Title"] = "Store";
+}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/store.css">
+</head>
+@model StoreVM
+   <main>
+        <section id="first">
+            <div class="studio">
+                <div class="container">
+                    <div class="row">
+                        <div class="titles col-lg-6">
+                            <div class="image"><img src="../assets/images/@Model.StoreFirst.MiniImage" alt="">
+                                <p>@Model.StoreFirst.Name</p>
+
+                            </div>
+                            <div class="title">
+                                <h3>@Model.StoreFirst.Title</h3>
+                                <p>@Model.StoreFirst.Description
+                                </p><a href="../Html/login.html">@Model.StoreFirst.Tag</a>
+                            </div>
+                        </div>
+                        <div class="images col-lg-6"><img src="../assets/images/@Model.StoreFirst.BigImage" alt=""></div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="auto">
+            <div class="auto">
+                <div class="container">
+                    <div class="row">
+                        <div class="title">
+                            <h3>@Model.StoreAutoTitle.Name
+                            </h3>
+                            <strong>@Model.StoreAutoTitle.Title</strong>
+                            <p>@Model.StoreAutoTitle.Descrption</p>
+                        </div>
+
+                    </div>
+                    <div class="images">
+                        <div class="image1 col-lg-4 col-md-4 col-sm-12"><img src="../assets/images/@Model.StoreAutoTitle.Image1"
+                                alt=""></div>
+                        <div class="image2 col-lg-4 col-md-4 col-sm-12"><img src="../assets/images/@Model.StoreAutoTitle.Image2"
+                                alt=""></div>
+                        <div class="image3 col-lg-4 col-md-4 col-sm-12"><img src="../assets/images/@Model.StoreAutoTitle.Image3"
+                                alt=""></div>
+                    </div>
+                    <div class="client">
+                        <div class="row">
+                            <div class="flex">
+                                @foreach (StoreAutoSpan span in Model.StoreAutoSpan)
+                               {
+                                   <span>@span.Name</span>
+                                <hr>
+                               }
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                        
+                           @foreach (StoreAutoTexts texts in Model.StoreAutoTexts)
+                          {
+                               <div class="text col-lg-4">
+                                <h3>@texts.Name</h3>
+                                <p>@texts.Description
+                                   </p>
+                            </div>
+                          }
+                        </div>
+                    </div>
+                    <div class="partner">
+                        <h3>@Model.StoreAutoImagesName.Name</h3>
+                        <div class="images">@foreach (StoreAutoImages storeAuto in Model.StoreAutoImages )
+                                         {
+                                             <img src="../assets/images/@storeAuto.Image"
+                                alt="">
+                                         }</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section id="com">
+            <div class="com">
+                <div class="container">
+                    <div class="row">
+                        <div class="titles col-lg-6">
+                            <h2>@Model.StoreCom.Name</h2>
+                            <h3>@Model.StoreCom.Title</h3>
+                            <p>@Model.StoreCom.Description</p>
+                        </div>
+                        <div class="image col-lg-6"><img src="../assets/images/@Model.StoreCom.Image" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="product">
+            <div class="product">
+                <div class="container">
+                    <div class="row">
+                        <div class="title">
+                            <h2>@Model.StoreProductTitle.Title</h2>
+                            <h3>@Model.StoreProductTitle.Description</h3>
+                            <p>@Model.StoreProductTitle.Text</p>
+                        </div>
+                        <div class="images">
+
+                            <div class="row">
+                               
+                              @foreach (StoreProductImage image in @Model.StoreProductImage)
+                             {
+                                   <div class="image col-lg-4">
+                                    <img src="../assets/images/hoverimage/@image.FrontPicture"
+                                        alt="Card Back">
+                                    <img src="../assets/images/hoverimage/@image.BackPicture"
+                                        class="img-top" alt="Card Front">
+                                    <p>@image.Name</p>
+                                </div>
+                             }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        <section id="tools">
+           @foreach (StoreTools tools in @Model.StoreTools)
+          {
+               <div class="tool">
+                <div class="container">
+                    <div class="row">
+                        <div class="titles col-lg-6 col-md-4 col-sm-12">
+                            <h2>@tools.Name</h2>
+                            <h3>@tools.Title</h3>
+                            <p>@tools.Description</p>
+                        </div>
+                        <div class="images col-lg-6 col-md-4 col-sm-12"><img src="../assets/images/@tools.Image"
+                                alt=""></div>
+                    </div>
+                </div>
+            </div>
+              
+          }
+          
+        </section>
+        <section id="cards">
+        <div class="container">
+            <div class="row">
+                <div class="title">
+                    @foreach (Cards cards1 in @Model.Cards)
+                    {
+                        @if (cards1.Name != null)
+                        {
+                            <h3>@cards1.Name </h3>
+                        }
+
+                    }
+                </div>
+                @foreach (Cards cards in @Model.Cards)
+                {
+                    <div class="card col-lg-4 col-md-6  col-sm-12">
+                        <div class="product">
+                            <a href="">
+                                <div class="image">
+                                    <img src="../assets/images/@cards.Image"
+                                     alt=""><span>@cards.Span</span>
+                                </div>
+                                <div class="text">
+                                    <p>
+                                        @cards.Text
+                                    </p>
+                                </div>
+                                <div class="learn">
+                                    <h5>@cards.Title <i class="@cards.Icons"></i></h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </section>
+      <section id="get">
+        <div class="get">
+            <div class="container">
+                <div class="row">
+                    <div class="title">
+                        <h3> @Model.Get.Title</h3>
+
+                    </div>
+                    <div class="text">
+                        <p>@Model.Get.Text</p>
+
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                   {
+                        <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
+
+                    }
+                    else
+                    {
+                          <a asp-controller="Acoount" asp-action="Login">@Model.Get.Link</a>
+                    }
+
+                </div>
+            </div>
+        </div>
+ 
+    </section>
+    </main>
+

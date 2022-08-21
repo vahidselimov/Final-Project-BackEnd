@@ -129,41 +129,20 @@
                 <div class="container">
                     <div class="row">
                         <div class="title">
-                            <h3>MANAGEMENT</h3>
-                            <p>Let Us Handle the Technical Stuff</p>
+                            <h3>@Model.WebMangTitle.Title</h3>
+                            <p>@Model.WebMangTitle.Text</p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="icons col-lg-4"><i class="fa-solid fa-server"></i>
-                            <h3>Free Unlimited Hosting</h3>
-                            <p>Enjoy reliable and scalable hosting with Pixieset's free web hosting service. We place no
-                                limits on your site’s bandwidth whatsoever.</p>
+                        
+                   @foreach (WebManagmentIcons webicon in @Model.WebManagmentIcons)
+                  {
+                      
+                        <div class="icons col-lg-4"><i class="@webicon.Icon"></i>
+                            <h3>@webicon.Title</h3>
+                            <p>@webicon.Text</p>
                         </div>
-                        <div class="icons col-lg-4"><i class="fa-solid fa-circle-check"></i>
-                            <h3>SSL Certificate Includeds</h3>
-                            <p>Every Pixieset website comes with a free SSL certificate, which we create and renew for
-                                you automatically.</p>
-                        </div>
-                        <div class="icons col-lg-4"><i class="fa-solid fa-gauge-simple-high"></i>
-                            <h3>Fast Content Delivery</h3>
-                            <p>All your web content and photos are delivered using a global CDN. So no matter where your
-                                visitors come from, your pages will load fast..</p>
-                        </div>
-                        <div class="icons col-lg-4"><i class="fa-solid fa-lock"></i>
-                            <h3>Built-in Security</h3>
-                            <p>Pixieset websites have no security patches to install or software to update. Your site is
-                                always protected from malware and secured from start to finish.</p>
-                        </div>
-                        <div class="icons col-lg-4"><i class="fa-solid fa-signal"></i>
-                            <h3>Enterprise-grade Uptime</h3>
-                            <p>We use the world’s most sophisticated vendors to provide you with superior uptime. Your
-                                website uses the same technology as some of the internet’s top websites.</p>
-                        </div>
-                        <div class="icons col-lg-4"><i class="fa-solid fa-list-check"></i>
-                            <h3>Fully Managed Operations</h3>
-                            <p>Pixieset websites are constantly monitored from locations globally. Our engineers are
-                                ready to respond within minutes of detecting any unexpected issues.</p>
-                        </div>
+                  }
                     </div>
                 </div>
             </div>
@@ -172,89 +151,84 @@
             <div class="profile">
                 <div class="container">
                     <div class="row">
-                        <div class="titles col-lg-6"><i class="fa-solid fa-quote-left"></i>
-                            <p>I have to say Pixieset is</p><strong>the most versatile and simplest website builder I’ve
-                                used.</strong>
+                        <div class="titles col-lg-6"><i class="@Model.WebProfile.LeftIcon"></i>
+                            <p>@Model.WebProfile.Title</p><strong>@Model.WebProfile.Strong</strong>
                             <p> I love having a website, and I don’t think I will ever switch to any other platform!</p>
-                            <i class="fa-solid fa-quote-right"></i>
+                            <i class="@Model.WebProfile.RightIcon"></i>
                             <div class="name">
-                                <h5>Ashley Martinez</h5><a href="">Ginger Snap Studios</a>
+                                <h5>@Model.WebProfile.Name</h5><a href="#">@Model.WebProfile.LastName</a>
                             </div>
                         </div>
-                        <div class="image col-lg-6"><img src="../assets/images/website-user-testimonial.jpg" alt=""></div>
+                        <div class="image col-lg-6"><img src="../assets/images/@Model.WebProfile.Image" alt=""></div>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="cards">
+         <section id="cards">
+        <div class="container">
+            <div class="row">
+                <div class="title">
+                   @foreach (Cards cards1 in @Model.Cards)
+                  {
+                      @if (cards1.Name!=null)
+                     {
+                          <h3>@cards1.Name </h3>
+                     }
+                       
+                  }
+                </div>
+               @foreach (Cards cards in @Model.Cards)
+              {
+                   <div class="card col-lg-4 col-md-6  col-sm-12">
+                    <div class="product">
+                        <a href="">
+                            <div class="image">
+                                <img src="../assets/images/@cards.Image"
+                                     alt=""><span>@cards.Span</span>
+                            </div>
+                            <div class="text">
+                                <p>
+                                   @cards.Text
+                                </p>
+                            </div>
+                            <div class="learn">
+                               <h5>@cards.Title <i class="@cards.Icons"></i></h5>
+                            </div>
+                        </a>
+                    </div>   
+                </div>    
+              }
+              
+                
+            </div>
+        </div>
+    </section>
+     <section id="get">
+        <div class="get">
             <div class="container">
                 <div class="row">
                     <div class="title">
-                        <h3>See More from Pixieset</h3>
+                        <h3> @Model.Get.Title</h3>
+
                     </div>
-                    <div class="card col-lg-4 col-md-6  col-sm-12">
-                        <div class="product"><a href="">
-                                <div class="image"><img src="../assets/images/product-website.png"
-                                        alt=""><span>Website</span>
-                                </div>
-                                <div class="text">
-                                    <p>The easy and fun way to build a stunning photography website, portfolio or blog.
-                                    </p>
-                                </div>
-                                <div class="learn">
-                                    <h5>Learn More <i class="fa-solid fa-arrow-right-long"></i></h5>
-                                </div>
-                            </a>
-                        </div>
+                    <div class="text">
+                        <p>@Model.Get.Text</p>
+
                     </div>
-                    <div class="card col-lg-4 col-md-6 col-sm-12">
-                        <div class="product"><a href="">
-                                <div class="image"><img src="../assets/images/product-studio-manager.png"
-                                        alt=""><span>Studio Manager</span>
-                                </div>
-                                <div class="text">
-                                    <p>The easy and fun way to build a stunning photography website, portfolio or blog.
-                                    </p>
-                                </div>
-                                <div class="learn">
-                                    <h5>Learn More <i class="fa-solid fa-arrow-right-long"></i></h5>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card col-lg-4 col-md-6 col-sm-12">
-                        <div class="product"><a href="">
-                                <div class="image"><img src="../assets/images/product-store.png"
-                                        alt=""><span>Store</span>
-                                </div>
-                                <div class="text">
-                                    <p>The easy and fun way to build a stunning photography website, portfolio or blog.
-                                    </p>
-                                </div>
-                                <div class="learn">
-                                    <h5>Learn More <i class="fa-solid fa-arrow-right-long"></i></h5>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                   {
+                        <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
+
+                    }
+                    else
+                    {
+                          <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
+                    }
+
                 </div>
             </div>
-        </section>
-        <section id="get">
-            <div class="get">
-                <div class="container">
-                    <div class="row">
-                        <div class="title">
-                            <h3>Get Started with Pixieset Today</h3>
-                        </div>
-                        <div class="text">
-                            <p>Free forever. Upgrade when you need to.</p>
-                        </div>
-                        <a href="../Html/login.html">Get Started</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -23,6 +23,11 @@ namespace Pixieset.Controllers
                 WebBuilder=context.WebBuilder.FirstOrDefault(),
                 WebIcons=context.WebIcons.ToList(),
                 WebTool=context.WebTool.FirstOrDefault(),
+                WebManagmentIcons=context.WebManagmentIcons.ToList(),
+                WebMangTitle=context.WebMangTitles.FirstOrDefault(),
+                WebProfile=context.WebProfile.FirstOrDefault(),
+                Cards=context.Cards.ToList(),
+                Get=context.Gets.FirstOrDefault(),
             };
             return View(websiteVM);
         }

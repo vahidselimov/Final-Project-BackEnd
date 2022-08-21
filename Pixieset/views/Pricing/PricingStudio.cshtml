@@ -704,20 +704,28 @@
         </div>
 
     </section>
-      <section id="get">
+     <section id="get">
         <div class="get">
             <div class="container">
-                <div class="row">  
-                    <div class="title">  
+                <div class="row">
+                    <div class="title">
                         <h3> @Model.Get.Title</h3>
-                       
+
                     </div>
                     <div class="text">
                         <p>@Model.Get.Text</p>
-                        
+
                     </div>
-                    <a href="../Html/login.html">@Model.Get.Link</a>
-                 
+                    @if (User.Identity.IsAuthenticated)
+                   {
+                        <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
+
+                    }
+                    else
+                    {
+                          <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
+                    }
+
                 </div>
             </div>
         </div>

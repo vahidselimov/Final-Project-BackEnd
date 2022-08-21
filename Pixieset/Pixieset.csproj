@@ -23,6 +23,12 @@
     <Compile Remove="Migrations\20220810153527_CreateSuiteTitleSuiteTitleTables.Designer.cs" />
     <Compile Remove="Migrations\20220810174406_CreateSuiteTrs.cs" />
     <Compile Remove="Migrations\20220810174406_CreateSuiteTrs.Designer.cs" />
+    <Compile Remove="Migrations\20220816174703_CreateStoreToolTable.cs" />
+    <Compile Remove="Migrations\20220816174703_CreateStoreToolTable.Designer.cs" />
+    <Compile Remove="Migrations\20220816181836_CreateStoreAutoTable.cs" />
+    <Compile Remove="Migrations\20220816181836_CreateStoreAutoTable.Designer.cs" />
+    <Compile Remove="Migrations\20220817074909_Appusee.cs" />
+    <Compile Remove="Migrations\20220817074909_Appusee.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.27">

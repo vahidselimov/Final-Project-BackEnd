@@ -1,0 +1,60 @@
+﻿
+
+<body>
+    <header>
+        <div class="header">
+            <nav>
+                <div class="nav">
+                    <div class="container">
+                        <div class="row">
+                            <div class="logo col-lg-11 col-md-4 col-sm-6"><a asp-controller="Home" asp-action="Products">PIXIESET</a></div>
+                            <div class="profile col-lg-1 col-md-4 col-sm-6">
+                                <ul class="navbar-nav">
+                                    <!-- Avatar -->
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
+                                           role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa-solid fa-user"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" href="../Html/myprofile.html">@User.Identity.Name  <i class="fa-solid fa-id-badge"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" asp-controller="account" asp-action="Logout">
+                                                        Logout <i class="fa-solid fa-right-from-bracket"></i>
+                                                    </a>
+                                                </li>
+                                                
+                                               <li>
+                                                <a class="dropdown-item"  asp-controller="Account" asp-action="Settings" asp-route-id="@User.Identity.Name"   >Settings <i class="fa-solid fa-gears"></i></a>
+                                            </li>
+                                            }
+                                            else
+                                            {
+                                                <li>
+                                                    <a class="dropdown-item" asp-controller="Account" asp-action="Login">My Account<i class="fa-solid fa-id-badge"></i></a>
+                                                </li>
+
+                                            }
+                                           
+                                           
+                                               
+                                           
+
+                                        </ul>
+                                    </li>
+                                </u
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    @RenderBody()
+    <footer></footer>
+</body>
+

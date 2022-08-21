@@ -2,6 +2,7 @@
 <html lang="en">
 
 <body>
+
      <header class="header">
         
         <div class="container">
@@ -29,7 +30,7 @@
                                             </div>
                                         </div>
                                     </a></li>
-                                <li class="menu-item"><a href="../Html/website.html">
+                                <li class="menu-item"><a asp-controller="Website" asp-action="Websites">
                                         <div class="flx"><img src="../assets/images/product-website.png" alt="">
                                             <div class="flex">
                                                 <h3>Website</h3><span>Build a beautiful portfolio website</span>
@@ -44,7 +45,7 @@
                                             </div>
                                         </div>
                                     </a></li>
-                                <li class="menu-item"><a href="../Html/store.html">
+                                <li class="menu-item"><a asp-controller="Stores" asp-action="Store">
                                         <div class="flx"><img src="../assets/images/product-store.png" alt="">
                                             <div class="flex">
                                                 <h3>Store</h3><span>Your online store for prints and downloads</span>
@@ -67,13 +68,22 @@
                         <li class="menu-item">
                             <a asp-controller="Pricing" asp-action="Pricings">PRICING</a>
                         </li>
-                        <li class="menu-item login">
-                            <a href="../Html/login.html">Login</a>
+                       @if (User.Identity.IsAuthenticated)
+                      {
+                           <li class="menu-item btn"style="width:200px;background-color:#1abc9c" >
+                            <a asp-controller="Profile" asp-action="Profiles" style="font-size:17px;color:#fff;font-family: 'Times New Roman', Times, serif;">Get Started</a>
+                        </li>
+                      }
+                        else
+                        {
+                             <li class="menu-item login">
+                            <a asp-controller="Account" asp-action="Login">Login</a>
 
                         </li>
                         <li class="menu-item signup">
-                            <a href="../Html/register.html">Sign Up</a>
+                            <a asp-controller="Account" asp-action="Register">Sign Up</a>
                         </li>
+                        }
                     </ul>
                 </nav>
                 <!-- navigation menu end -->
@@ -93,7 +103,7 @@
                             <li><a asp-controller="Home" asp-action="Products">Client Gallery</a></li>
                             <li><a asp-controller="Website" asp-action="Websites">Website</a></li>
                             <li><a href="../Html/studio manager.html">Studio Manager</a></li>
-                            <li><a href="../Html/store.html">Store</a></li>
+                            <li><a asp-controller="Stores" asp-action="Store">Store</a></li>
                             <li><a href="../Html/mobile gallery app.html">Mobile Gallery Map</a></li>
                              <li><a asp-controller="Pricing" asp-action="Pricings">Pricings</a></></li>
                         
@@ -107,7 +117,7 @@
 
                        
                             <li><a asp-controller="Example" asp-action="Examples">Examples</a></li>
-                            <li><a asp-controller="Example" asp-action="Examples">Plugins</a></></li>
+                            <li><a asp-controller="Plugins" asp-action="Plugin">Plugins</a></></li>
                                
                           
 

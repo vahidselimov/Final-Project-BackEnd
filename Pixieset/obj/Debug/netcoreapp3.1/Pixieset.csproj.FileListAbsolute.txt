@@ -291,3 +291,15 @@ C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Exam
 C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Pricing\Pricings.cshtml.g.cs
 C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Pricing\PricingStudio.cshtml.g.cs
 C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Website\Websites.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Plugins\Plugin.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Stores\Store.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Account\Register.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Asus\Desktop\Pixieset\Pixieset\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Asus\Desktop\Pixieset\Pixieset\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Asus\Desktop\Pixieset\Pixieset\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Asus\Desktop\Pixieset\Pixieset\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Account\Login.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\shared\_Layout1.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Profile\Profiles.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Account\Settings.cshtml.g.cs

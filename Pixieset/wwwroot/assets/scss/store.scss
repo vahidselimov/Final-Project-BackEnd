@@ -18,12 +18,11 @@ body {
 
     header {
 
-
         background-image: url(../images/store-hero-bg.jpg);
         width: 110%;
         height: 700px;
         background-repeat: no-repeat;
-        position: relative;
+      
         background-size: cover;
         background-position: center 90%;
         background-attachment: fixed;
@@ -150,11 +149,11 @@ body {
             }
 
             >.sub-menu {
-                z-index: 100;
                 box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
                 width: 420px;
                 position: absolute;
                 left: 0;
+
                 top: 100%;
                 background-color: #ffffff;
                 padding: 10px 0;
@@ -163,7 +162,7 @@ body {
                 transition: all 0.5s ease;
                 opacity: 0;
                 visibility: hidden;
-
+z-index: 100;
                 >.menu-item {
                     display: block;
 
@@ -482,12 +481,23 @@ body {
     }
 
 
+   
+}
+
+//main//
+main {
     #first {
         margin-top: 10%;
         margin-left: 10%;
 
         .studio {
-            display: flex;
+            position: absolute;
+			text-align: center;
+            justify-content: center;
+			align-items: center;
+			flex-flow: column;
+			top: 30%;
+			left: 7%;
 
             .titles {
                 .image {
@@ -578,10 +588,6 @@ body {
             }
         }
     }
-}
-
-//main//
-main {
     //auto//
     #auto {
         .auto {
