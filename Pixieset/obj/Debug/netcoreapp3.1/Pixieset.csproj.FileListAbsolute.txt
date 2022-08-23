@@ -303,3 +303,8 @@ C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Acco
 C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\shared\_Layout1.cshtml.g.cs
 C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Profile\Profiles.cshtml.g.cs
 C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Account\Settings.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Account\ForgotPassword.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Account\ResetPassword.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\Dashboard\Index.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\_ViewStart.cshtml.g.cs

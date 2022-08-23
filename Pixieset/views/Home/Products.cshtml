@@ -26,7 +26,16 @@
     <link rel="stylesheet" href="../assets/css/Products.css">
 </head>
 @model HomeVM
+@if (TempData["Verify"] != null)
+{
+    <input type="hidden"  id="verifyJS" />
+}
+@if (TempData["Verified"] != null)
+{
+    <input type="hidden"  id="verifiedJS" />
+}
 <main>
+
     <!--First-->
     <section id="first">
         <div class="text-center">
@@ -327,13 +336,13 @@
 
                     </div>
                     @if (User.Identity.IsAuthenticated)
-                   {
+                    {
                         <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
 
                     }
                     else
                     {
-                          <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
+                        <a asp-controller="Profile" asp-action="Profiles">@Model.Get.Link</a>
                     }
 
                 </div>
@@ -341,6 +350,56 @@
         </div>
     </section>
 </main>
+@section Scripts{
+<script>
+    $(document).ready(function(){
+            if ($("#verifyJS").length) {
+                Command: toastr["success"]("Please verify your email")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "2000",
+                    "extendedTimeOut": "3000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+
+              if ($("#verifiedJS").length) {
+                Command: toastr["success"]("Your email has been verified")
+
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "timeOut": "2000",
+                    "extendedTimeOut": "3000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+            }
+    })
+
+            </script>
+}
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"

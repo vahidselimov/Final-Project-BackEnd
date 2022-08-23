@@ -42,8 +42,8 @@ namespace Pixieset
                  opt.Lockout.MaxFailedAccessAttempts = 3;
                  opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
                  opt.Lockout.AllowedForNewUsers = true;
-                 opt.SignIn.RequireConfirmedEmail = false;
-                 opt.User.RequireUniqueEmail = false;
+                 opt.SignIn.RequireConfirmedEmail = true;
+                 //opt.User.RequireUniqueEmail = false;
                  opt.SignIn.RequireConfirmedAccount = false;
                  opt.User.AllowedUserNameCharacters = "QWERTYUIOPASDFGHJKLZXXXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890_";
 
@@ -63,9 +63,16 @@ namespace Pixieset
             app.UseStaticFiles();
             app.UseAuthorization();
             app.UseAuthentication();
-
+           
+            
+              
+          
             app.UseEndpoints(endpoints =>
             {
+                  endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=dashboard}/{action=index}/{id?}"
+                );
                 endpoints.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Products}/{Id?}");
             });
           

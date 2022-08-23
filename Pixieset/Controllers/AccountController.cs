@@ -1,7 +1,14 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Pixieset.Models;
+using Pixieset.Utilities;
 using Pixieset.ViewModels;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace Pixieset.Controllers
@@ -10,11 +17,13 @@ namespace Pixieset.Controllers
     {
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.roleManager = roleManager;
         }
         public IActionResult Register()
         {
@@ -35,7 +44,7 @@ namespace Pixieset.Controllers
                 LastName = register.LastName,
                 Email = register.Email,
                 UserName = register.UserName,
-                TermsAndContensions=register.TermsAndConditions
+                TermsAndContensions = register.TermsAndConditions
 
 
 
@@ -52,21 +61,138 @@ namespace Pixieset.Controllers
                     }
                     return View();
                 }
+                await userManager.AddToRoleAsync(User, Roles.Member.ToString());
             }
             else
             {
                 ModelState.AddModelError("", "Accept the terms or you will not be able to register");
                 return View(register);
             }
+           
+            string Token = await userManager.GenerateEmailConfirmationTokenAsync(User);
+            string Link = Url.Action(nameof(VerifyEmail), "Account", new {email=User.Email,Token},Request.Scheme,Request.Host.ToString());
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("vahidselimov22@gmail.com", "Pixiest Company");
+            mailMessage.To.Add(new MailAddress(User.Email));
+            mailMessage.Subject = "Verify Email"; 
+            string body=string.Empty;
+            
+            using(StreamReader reader = new StreamReader("wwwroot/assets/template/verifyemail.html"))
+            {
+             body=reader.ReadToEnd();
+            }
+            string about = $"Hi <strong>{User.FirstName + " " + User.LastName}</strong> In order to start using your  account, you need to confirm your email address.";
+            body  = body.Replace("{{link}}", Link);
+            mailMessage.Body = body.Replace("{{About}}", about);
+            mailMessage.IsBodyHtml = true;
+            SmtpClient smtp= new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new NetworkCredential("vahidselimov22@gmail.com", "xaubxzfdauzruupt");
+            smtp.Send(mailMessage);
+            TempData["Verify"] = true;
+            await userManager.AddToRoleAsync(User, Roles.Member.ToString());
 
-            await signInManager.SignInAsync(User, false);
+            
             return RedirectToAction("Products", "Home");
+            
+
+        }
+        public async Task<IActionResult> VerifyEmail(string email,string token )
+        {
+            AppUser user = await userManager.FindByEmailAsync(email);
+            if(user == null)
+            {
+                return BadRequest();
+            }
+            await userManager.ConfirmEmailAsync(user, token);
+            await signInManager.SignInAsync(user, true);
+            TempData["Verified"]=true;
+
+            return RedirectToAction("Products","Home");
 
         }
         public IActionResult Login()
         {
             return View();
 
+        }
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<ActionResult> ForgotPassword(AccountVM account)
+        {
+            AppUser user = await userManager.FindByEmailAsync(account.AppUser.Email);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            string token = await userManager.GeneratePasswordResetTokenAsync(user);
+            string link = Url.Action(nameof(ResetPassword), "Account", new { email = user.Email, token }, Request.Scheme, Request.Host.ToString());
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("vahidselimov22@gmail.com", "Pixieset");
+            mail.To.Add(new MailAddress(user.Email));
+            mail.Subject = "Reset Password";
+            //string body=string.Empty;
+            //using(StreamReader reader = new StreamReader("wwwroot/assets/template/resedpassword.html"))
+            //{
+            //    body = reader.ReadToEnd();
+            //}
+
+            mail.Body = $"<a href='{link}'>Please click here to reset your Password</a>";
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+            smtp.Credentials = new NetworkCredential("vahidselimov22@gmail.com", "xaubxzfdauzruupt");
+
+            smtp.Send(mail);
+            return RedirectToAction("Products", "Home");
+
+        }
+        public async  Task<IActionResult> ResetPassword(string email,string token)
+        {
+            AppUser user= await userManager.FindByEmailAsync(email);
+            if(user == null)
+            {
+                return BadRequest();
+            }
+            AccountVM model = new AccountVM
+            {
+                AppUser = user,
+                Token = token
+            };
+            return View(model);
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> ResetPassword(AccountVM account)
+        {
+            AppUser user = await userManager.FindByEmailAsync(account.AppUser.Email);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            AccountVM model = new AccountVM
+            {
+                AppUser = user,
+                Token = account.Token
+            };
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+
+            await userManager.ResetPasswordAsync(user, account.Token, account.Password);
+            await signInManager.SignInAsync(user, true);
+           
+            return RedirectToAction("Products", "Home");
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
@@ -79,40 +205,52 @@ namespace Pixieset.Controllers
                 return View();
 
             }
-            if (!loginVM.RememberMe)
+            IList<string> roles = await userManager.GetRolesAsync(user);
+            string role = roles.FirstOrDefault(r => r.ToLower().Trim() == Roles.Member.ToString().ToLower().Trim());
+            if (role == null)
             {
-                Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, loginVM.Password, true, true);
-                if (!result.Succeeded)
-                {
-                    if (result.IsLockedOut)
-                    {
-                        ModelState.AddModelError("", "You have been dismissed for 5 miniutes");
-                    }
+                ModelState.AddModelError("", "Something went wrong.Please contact with admins");
+                return View();
 
-                    ModelState.AddModelError("", "UserName or Password is in incorrect");
-                    return View();
-
-
-                }
             }
             else
             {
-                Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, loginVM.Password, false, true);
-                if (!result.Succeeded)
+                if (!loginVM.RememberMe)
                 {
-                    if (result.IsLockedOut)
+                    Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, loginVM.Password, true, true);
+                    if (!result.Succeeded)
                     {
-                        ModelState.AddModelError("", "You have been dismissed for 5 miniutes");
+                        if (result.IsLockedOut)
+                        {
+                            ModelState.AddModelError("", "You have been dismissed for 5 miniutes");
+                        }
+
+                        ModelState.AddModelError("", "UserName or Password is in incorrect");
+                        return View();
+
+
                     }
-
-                    ModelState.AddModelError("", "UserName or Password is in incorrect");
-                    return View();
-
-
                 }
-            }
+                else
+                {
+                    Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(user, loginVM.Password, false, true);
+                    if (!result.Succeeded)
+                    {
+                        if (result.IsLockedOut)
+                        {
+                            ModelState.AddModelError("", "You have been dismissed for 5 miniutes");
+                        }
 
-            return RedirectToAction("Profiles", "Profile");
+                        ModelState.AddModelError("", "UserName or Password is in incorrect");
+                        return View();
+
+
+                    }
+                }
+
+
+                return RedirectToAction("Profiles", "Profile");
+            }
         }
         public async Task<IActionResult> Logout()
         {
@@ -198,6 +336,14 @@ namespace Pixieset.Controllers
 
 
 
+
+        }
+
+        public async Task CreateRoles()
+        {
+            await roleManager.CreateAsync(new IdentityRole { Name = Roles.Member.ToString() });
+            await roleManager.CreateAsync(new IdentityRole { Name = Roles.Admin.ToString() });
+            await roleManager.CreateAsync(new IdentityRole { Name = Roles.SuperAdmin.ToString() });
 
         }
     }
