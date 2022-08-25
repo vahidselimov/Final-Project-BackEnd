@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pixieset.DAL;
 using Pixieset.Models;
+using Pixieset.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,10 @@ namespace Pixieset
         }
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddMvc();
+
+            services.AddSingleton<FileManager>();
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(opt =>
             {
@@ -58,15 +63,21 @@ namespace Pixieset
             {
                 app.UseDeveloperExceptionPage();
             }
+           
+
+
+
+
 
             app.UseRouting();
             app.UseStaticFiles();
             app.UseAuthorization();
             app.UseAuthentication();
-           
-            
-              
-          
+
+
+
+
+
             app.UseEndpoints(endpoints =>
             {
                   endpoints.MapControllerRoute(

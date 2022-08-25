@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Pixieset.Areas.PixiesetAdmin.Models;
 using Pixieset.Models;
 
 namespace Pixieset.DAL
@@ -86,6 +87,8 @@ namespace Pixieset.DAL
         public DbSet<StoreAutoTexts> StoreAutoTexts { get; set; }
         public DbSet<StoreAutoImages> StoreAutoImages { get; set; }
         public DbSet<StoreAutoImagesName> StoreAutoImagesNames { get; set; }
-
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Media>Medias { get; set; }
+       
     }
 }

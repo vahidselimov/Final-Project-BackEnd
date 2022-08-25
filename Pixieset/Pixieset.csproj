@@ -44,7 +44,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\PixiesetAdmin\Data\" />
-    <Folder Include="Areas\PixiesetAdmin\Models\" />
     <Folder Include="wwwroot\admin\" />
   </ItemGroup>
 

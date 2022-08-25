@@ -7,5 +7,7 @@ namespace Pixieset.Models
          public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool TermsAndContensions { get; set; }
+        public bool IsBlock { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

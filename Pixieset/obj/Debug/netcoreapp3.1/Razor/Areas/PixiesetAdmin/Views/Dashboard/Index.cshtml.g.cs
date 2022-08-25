@@ -12,7 +12,22 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 1 "C:\Users\Asus\Desktop\Pixieset\Pixieset\Areas\PixiesetAdmin\Views\_ViewImports.cshtml"
+using Pixieset.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "C:\Users\Asus\Desktop\Pixieset\Pixieset\Areas\PixiesetAdmin\Views\_ViewImports.cshtml"
+using Pixieset.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"83872c409543ed4b61aab2914e2bdaf7d37b1145", @"/Areas/PixiesetAdmin/Views/Dashboard/Index.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"38b0a73d6c4011eedc1b46aaa0a929b55221db1b", @"/Areas/PixiesetAdmin/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Areas_PixiesetAdmin_Views_Dashboard_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     #nullable disable

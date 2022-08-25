@@ -11,6 +11,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
+
 namespace Pixieset.Controllers
 {
     public class AccountController : Controller
@@ -61,7 +62,7 @@ namespace Pixieset.Controllers
                     }
                     return View();
                 }
-                await userManager.AddToRoleAsync(User, Roles.Member.ToString());
+                //await userManager.AddToRoleAsync(User, Roles.Member.ToString());
             }
             else
             {
@@ -94,7 +95,7 @@ namespace Pixieset.Controllers
             TempData["Verify"] = true;
             await userManager.AddToRoleAsync(User, Roles.Member.ToString());
 
-            
+
             return RedirectToAction("Products", "Home");
             
 
@@ -155,6 +156,32 @@ namespace Pixieset.Controllers
             return RedirectToAction("Products", "Home");
 
         }
+        //public async Task SeedSuperAdminAsync(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager)
+        //{
+        //    //Seed Default User
+        //    var defaultUser = new AppUser
+        //    {
+        //        UserName = "superadmin",
+        //        Email = "tu6g17bsz@code.edu.az",
+        //        FirstName = "Vahid",
+        //        LastName = "Salimov",
+        //        EmailConfirmed = true,
+
+        //    };
+        //    if (userManager.Users.All(u => u.UserName != defaultUser.UserName))
+        //    {
+        //        var user = await userManager.FindByNameAsync(defaultUser.UserName);
+        //        if (user == null)
+        //        {
+        //            await userManager.CreateAsync(defaultUser, "Vahid1-1");
+
+        //            await userManager.AddToRoleAsync(defaultUser, Roles.SuperAdmin.ToString());
+
+        //        }
+
+        //    }
+
+        //}
         public async  Task<IActionResult> ResetPassword(string email,string token)
         {
             AppUser user= await userManager.FindByEmailAsync(email);
@@ -346,5 +373,6 @@ namespace Pixieset.Controllers
             await roleManager.CreateAsync(new IdentityRole { Name = Roles.SuperAdmin.ToString() });
 
         }
+       
     }
 }

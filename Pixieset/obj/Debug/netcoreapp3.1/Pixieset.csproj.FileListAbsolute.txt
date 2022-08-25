@@ -308,3 +308,8 @@ C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\views\Acco
 C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\Dashboard\Index.cshtml.g.cs
 C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\_ViewStart.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\RoleManager\Index.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\UserRoles\Index.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\_ViewImports.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\UserRoles\Manage.cshtml.g.cs
+C:\Users\Asus\Desktop\Pixieset\Pixieset\obj\Debug\netcoreapp3.1\Razor\Areas\PixiesetAdmin\Views\AdminAccount\Login.cshtml.g.cs
