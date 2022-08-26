@@ -19,7 +19,6 @@ body header {
   width: 110%;
   height: 700px;
   background-repeat: no-repeat;
-  position: relative;
   background-size: cover;
   background-position: center 90%;
   background-attachment: fixed;
@@ -359,23 +358,34 @@ body .menu-item.signup {
   min-width: 90px;
   text-align: center;
 }
-body #first {
+
+main #first {
   margin-top: 10%;
   margin-left: 10%;
 }
-body #first .studio .row {
+main #first .studio {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  top: 30%;
+  left: 7%;
+}
+main #first .studio .row {
   display: flex;
   justify-content: space-around;
 }
-body #first .studio .row .titles .image {
+main #first .studio .row .titles .image {
   display: flex;
 }
-body #first .studio .row .titles .image img {
+main #first .studio .row .titles .image img {
   height: 30px;
   width: 30px;
   margin: 0 15px 0 0;
 }
-body #first .studio .row .titles .image p {
+main #first .studio .row .titles .image p {
   font-family: proxima-nova, Lato, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 13px;
   font-weight: 700;
@@ -383,7 +393,7 @@ body #first .studio .row .titles .image p {
   line-height: 19.5px;
   text-align: left;
 }
-body #first .studio .row .titles .image span {
+main #first .studio .row .titles .image span {
   font-family: proxima-nova, Lato, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 10px;
   font-weight: 700;
@@ -399,7 +409,7 @@ body #first .studio .row .titles .image span {
   border-radius: 15px;
   opacity: 70%;
 }
-body #first .studio .row .titles .title h3 {
+main #first .studio .row .titles .title h3 {
   font-family: proxima-nova, Lato, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 20px;
   line-height: 50px;
@@ -409,7 +419,7 @@ body #first .studio .row .titles .title h3 {
   word-spacing: 0px;
   margin: 20px 0 0 0;
 }
-body #first .studio .row .titles .title p {
+main #first .studio .row .titles .title p {
   font-family: adobe-garamond-pro, Garamond, Georgia, serif;
   font-size: 18px;
   line-height: 30.42px;
@@ -421,10 +431,10 @@ body #first .studio .row .titles .title p {
   height: 61px;
   width: 410px;
 }
-body #first .studio .row .titles .title .tag {
+main #first .studio .row .titles .title .tag {
   margin-top: 15%;
 }
-body #first .studio .row .titles .title .tag .get {
+main #first .studio .row .titles .title .tag .get {
   font-family: proxima-nova, Lato, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   background-color: #1ABC9C;
   height: 82px;
@@ -440,7 +450,7 @@ body #first .studio .row .titles .title .tag .get {
   text-align: center;
   color: #fff;
 }
-body #first .studio .row .titles .title .tag .icon {
+main #first .studio .row .titles .title .tag .icon {
   font-family: proxima-nova, Lato, "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -452,21 +462,20 @@ body #first .studio .row .titles .title .tag .icon {
   width: 126px;
   margin: 5%;
 }
-body #first .studio .row .titles .title .tag .icon i {
+main #first .studio .row .titles .title .tag .icon i {
   color: #2a7869;
   font-size: 16px;
   font-weight: 900;
 }
-body #first .studio .row .titles .title .tag .icon span {
+main #first .studio .row .titles .title .tag .icon span {
   color: #1ABC9C;
 }
-body #first .studio .row .images img {
+main #first .studio .row .images img {
   height: 574px;
   width: 394px;
   min-width: 200px;
   min-height: 200px;
 }
-
 main #image {
   margin-top: 200px;
   background-image: url(../images/kiss-cover.jpg);

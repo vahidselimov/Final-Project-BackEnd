@@ -20,7 +20,7 @@
                                             @if (User.Identity.IsAuthenticated)
                                             {
                                                 <li>
-                                                    <a class="dropdown-item" href="../Html/myprofile.html">@User.Identity.Name  <i class="fa-solid fa-id-badge"></i></a>
+                                                    <a class="dropdown-item" asp-controller="Profile" asp-action="Myprofile">@User.Identity.Name  <i class="fa-solid fa-id-badge"></i></a>
                                                 </li>
                                                 <li>
                                                     <a class="dropdown-item" asp-controller="account" asp-action="Logout">

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Pixieset.Areas.PixiesetAdmin.Models;
 using Pixieset.Models;
+using Pixieset.ViewModels;
 
 namespace Pixieset.DAL
 {
@@ -89,6 +90,10 @@ namespace Pixieset.DAL
         public DbSet<StoreAutoImagesName> StoreAutoImagesNames { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<Media>Medias { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Pixieset.ViewModels.CategoryVM> CategoryVM { get; set; }
+        public DbSet<Pixieset.ViewModels.CreateCategoryVM> CreateCategoryVM { get; set; }
+        public DbSet<Pixieset.ViewModels.EditCategoryVM> EditCategoryVM { get; set; }
        
     }
 }

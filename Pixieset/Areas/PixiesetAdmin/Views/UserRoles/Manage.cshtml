@@ -1,12 +1,11 @@
 ﻿
-@model List<ManageUserRole>
+@model List<ManageUserRoleVM>
 @{
     ViewData["Title"] = "Manage";
  
 }
-
-  <form method="post"> 
-      <div class="card">
+<form method="post">
+    <div class="card">
         <div class="card-header">
             <h2>Manage User Roles</h2>
             Add/Remove Roles for User / @ViewBag.UserName.
@@ -26,10 +25,10 @@
             <div asp-validation-summary="All" class="text-danger"></div>
         </div>
         <div class="card-footer">
-            <button type="submit" value="Update" class="btn btn-primary"
-                   style="width:auto" asp-controller="Dashboard" asp-action="Index" asp-route-id="@ViewBag.userId" ></button>
-
-            
+            <input type="submit" value="Update" class="btn btn-primary"
+                   style="width:auto" />
+            <a asp-controller="userRoles" asp-action="index" asp-route-id="@ViewBag.userId"
+               class="btn btn-primary" style="width:auto">Cancel</a>
         </div>
     </div>
-    </form>
+</form>

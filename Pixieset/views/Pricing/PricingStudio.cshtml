@@ -267,7 +267,7 @@
                                                     btn++;
                                                     var most = btn == 4 ? "most" : "";
                                                     <th class="@most">
-                                                        <button onclick="location.href='payment.html'"
+                                                        <button  type="submit" asp-action="Payment" asp-controller="Pricing"
                                                             class="btn @thBtn.Class">
                                                             @thBtn.Name
                                                         </button>
@@ -395,7 +395,7 @@
                                                         if (@btn1.Id < 4)
                                                         {
                                                         <th class="">
-                                                            <button onclick="location.href='payment.html'"
+                                                            <button type="submit" asp-action="Payment" asp-controller="Pricing"
                                                             class="btn @btn1.Class">
                                                                     @btn1.Name
                                                             </button>
@@ -498,7 +498,7 @@
                                                     @if (@btn2.Id < 3)
                                                     {
                                                         <th class="">
-                                                            <button onclick="location.href='payment.html'"
+                                                            <button asp-action="Payment" asp-controller="Pricing"
                                                             class="btn @btn2.Class">
                                                                 @btn2.Name
                                                             </button>
@@ -639,7 +639,7 @@
 
                                                     {
                                                         <th class="@most">
-                                                            <button onclick="location.href='payment.html'"
+                                                            <button  type="submit" asp-action="Payment" asp-controller="Pricing"
                                                             class="btn @btn3.Class">
                                                                 @btn3.Name
                                                             </button>

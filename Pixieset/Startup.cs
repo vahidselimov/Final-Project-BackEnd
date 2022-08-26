@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Pixieset.Automapper;
 using Pixieset.DAL;
+using Pixieset.Infrastructure;
 using Pixieset.Models;
 using Pixieset.Services;
 using System;
@@ -37,6 +39,13 @@ namespace Pixieset
             {
                 opt.UseSqlServer(configuration.GetConnectionString("default"));
             });
+            services.AddTransient<IUnitOfWork,UnitofWork>();
+            var config = new AutoMapper.MapperConfiguration(cfg =>
+              {
+                  cfg.AddProfile(new MyProfile());
+              });
+            var mapper=config.CreateMapper();
+            services.AddSingleton(mapper);
             services.AddIdentity<AppUser, IdentityRole>(opt =>
              {
                  opt.Password.RequireDigit = true;

@@ -1,0 +1,63 @@
+﻿
+@model Slider
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<form method="post" enctype="multipart/form-data">
+    <div>
+        <label class="mb-3">Slider Text:</label><br />
+        <input asp-for="Text1" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Text2"></span>
+    </div>
+    <div>
+        <label class="mb-3">Slider Text2:</label><br />
+        <input asp-for="Text2" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Text2"></span>
+    </div>
+     <div>
+        <label class="mb-3">Slider Small:</label><br />
+        <input asp-for="Small" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Small"></span>
+    </div>
+
+       <div>
+        <label class="mb-3">Slider Small2:</label><br />
+        <input asp-for="Small2" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Small2"></span>
+    </div>
+       <div>
+        <label class="mb-3">Slider Small:</label><br />
+        <input asp-for="Name" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label class="mb-3">Slider discount:</label><br />
+        <input asp-for="Discount" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Discount"></span>
+    </div>
+    <div>
+        <label class="mb-3">Slider discover url:</label><br />
+        <input asp-for="DiscoverUrl" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="DiscoverUrl"></span>
+    </div>
+    <div>
+        <label class="mb-3">Slider order:</label><br />
+        <input asp-for="Order" class="form-control" /><br />
+        <span class="text-danger" asp-validation-for="Order"></span>
+    </div>
+    <div>
+        <label class="mb-3">Slider image:</label><br />
+        <input asp-for="Photo" class="form-control" accept="image/*" /><br />
+        <span class="text-danger" asp-validation-for="Photo"></span>
+    </div>
+     <div>
+        <label class="mb-3">Slider image:</label><br />
+        <input asp-for="Photo2" class="form-control" accept="image/*" /><br />
+        <span class="text-danger" asp-validation-for="Photo2"></span>
+    </div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary">Create slider</button>
+    </div>
+</form>

@@ -343,6 +343,21 @@ namespace Pixieset.Migrations
                     b.ToTable("Cards");
                 });
 
+            modelBuilder.Entity("Pixieset.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+                });
+
             modelBuilder.Entity("Pixieset.Models.Client", b =>
                 {
                     b.Property<int>("Id")
@@ -720,6 +735,26 @@ namespace Pixieset.Migrations
                     b.ToTable("Item");
                 });
 
+            modelBuilder.Entity("Pixieset.Models.Media", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("Medias");
+                });
+
             modelBuilder.Entity("Pixieset.Models.Mobileapp", b =>
                 {
                     b.Property<int>("Id")
@@ -973,6 +1008,12 @@ namespace Pixieset.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Discount")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DiscoverUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
@@ -981,6 +1022,9 @@ namespace Pixieset.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte>("Order")
+                        .HasColumnType("tinyint");
 
                     b.Property<string>("Small")
                         .HasColumnType("nvarchar(max)");
@@ -1926,6 +1970,51 @@ namespace Pixieset.Migrations
                     b.ToTable("WebsitesNames");
                 });
 
+            modelBuilder.Entity("Pixieset.ViewModels.CategoryVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CategoryVM");
+                });
+
+            modelBuilder.Entity("Pixieset.ViewModels.CreateCategoryVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("CreateCategoryVM");
+                });
+
+            modelBuilder.Entity("Pixieset.ViewModels.EditCategoryVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EditCategoryVM");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -1989,6 +2078,15 @@ namespace Pixieset.Migrations
                     b.HasOne("Pixieset.Models.ExpTitles", "ExpTitles")
                         .WithMany("Items")
                         .HasForeignKey("ExpTitlesId");
+                });
+
+            modelBuilder.Entity("Pixieset.Models.Media", b =>
+                {
+                    b.HasOne("Pixieset.Models.Category", "Category")
+                        .WithMany("Media")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Pixieset.Models.SocialIcons", b =>

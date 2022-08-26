@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Pixieset.ViewModels.MediaVM>
+
+@{
+    Layout = null;
+}
+
+<div class=container>
+    <div class=row>
+        @foreach (var item in Model)
+        {
+            <div class=col-md-3><a href="@("/uploads/"+item.ImagePath)" target="_parent">
+                <img src="@("/uploads/"+item.ImagePath)" alt="ligths" class="img-thumbnail" style="width:450px;height:450px;">
+                </a>
+                </div>
+
+        }
+    </div>
+</div>
+

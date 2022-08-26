@@ -32,6 +32,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="views\Category\Details.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.27" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.27" />
@@ -44,6 +49,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\PixiesetAdmin\Data\" />
+    <Folder Include="Views\StudioManager\" />
     <Folder Include="wwwroot\admin\" />
   </ItemGroup>
 

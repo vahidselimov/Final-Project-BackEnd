@@ -25,7 +25,7 @@ body {
         width: 110%;
         height: 500px;
         background-repeat: no-repeat;
-        position: relative;
+        
         background-size: cover;
         background-position: center 90%;
         background-attachment: fixed;
@@ -37,10 +37,11 @@ body {
         content: " ";
         display: block;
         position: absolute;
+
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 69.5%;
         background: rgba(0, 0, 0, .5);
         opacity: 70%;
     }
@@ -79,7 +80,7 @@ body {
         align-items: center;
         padding: 10px 0;
         border-radius: 4px;
-        position: relative;
+        // position: relative;
         align-items: center;
         bottom: 1px;
 
@@ -498,11 +499,23 @@ body {
     }
 
 
+   
+}
+
+main {
     #first {
         margin-top: 10%;
-
+        position: absolute;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column;
+        top: 10%;
+        left: 45%;
 
         .studio {
+            
             .title {
                 h1 {
 
@@ -516,9 +529,6 @@ body {
         }
 
     }
-}
-
-main {
     #tab {
         .tab {
             .container {

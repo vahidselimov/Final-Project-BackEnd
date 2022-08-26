@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "u8xiOs8G1/3DIMEMrocjjx62KmaoXg3/TbP+RHJEXnj2A4CuzjbFi8wuJPk/ch0Xlu+8KAJD8PCGZHToQAQLGQ==",
+  "dgSpecHash": "68UW/RsQniYve3waB9QualRnql9gqwxPkb7CpID8FaWs1nA6VdMw7Jem+BDxiALlIBMQMzpfmmjt08hJILDSqA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\Desktop\\Pixieset\\Pixieset\\Pixieset.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Asus\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.27\\microsoft.aspnetcore.cryptography.internal.3.1.27.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.27\\microsoft.aspnetcore.cryptography.keyderivation.3.1.27.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

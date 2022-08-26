@@ -93,5 +93,9 @@ namespace Pixieset.Controllers
             };
             return View(pricingVM);
         }
+        public IActionResult Payment()
+        {
+            return View();
+        }
     }
 }

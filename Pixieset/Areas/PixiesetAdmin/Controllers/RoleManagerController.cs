@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace Pixieset.Areas.PixiesetAdmin.Controllers
 {
-    
+    [Area("PixiesetAdmin")]
+    //[Authorize(Roles = "Admin,SuperAdmin")]
     public class RoleManagerController : Controller
     {
         private readonly UserManager<AppUser> userManager;

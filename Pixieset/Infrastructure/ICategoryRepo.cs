@@ -1,4 +1,5 @@
 ﻿using Pixieset.Models;
+using Pixieset.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,6 +12,7 @@ namespace Pixieset.Infrastructure
         void Insert(Category category); 
         void Update(Category category);
         void Delete(int id);
-       //Task<List<Category>> GetAllAsync();
+        
+        //Task<List<Category>> GetAllAsync();
     }
 }

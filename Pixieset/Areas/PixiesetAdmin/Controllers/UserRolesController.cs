@@ -7,13 +7,15 @@ using Pixieset.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using Pixieset.DAL;
-using Pixieset.Utilities;
+
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
+using Pixieset.Utilities;
 
 namespace Pixieset.Areas.PixiesetAdmin.Controllers
 {
-
+    [Area("PixiesetAdmin")]
+    //[Authorize(Roles = "Admin,SuperAdmin")]
     public class UserRolesController : Controller
     {
         private readonly UserManager<AppUser> userManager;
@@ -40,6 +42,7 @@ namespace Pixieset.Areas.PixiesetAdmin.Controllers
                 thisViewModel.Email = user.Email;
                 thisViewModel.FirstName = user.FirstName;
                 thisViewModel.LastName = user.LastName;
+                thisViewModel.UserName = user.UserName;
                 thisViewModel.Roles = await GetUserRoles(user);
                 userRolesVM.Add(thisViewModel);
 
@@ -48,7 +51,12 @@ namespace Pixieset.Areas.PixiesetAdmin.Controllers
             return View(userRolesVM);
 
         }
-       
+        private async Task<List<string>> GetUserRoles(AppUser user)
+        {
+
+            return new List<string>(await userManager.GetRolesAsync(user));
+        }
+
 
         [Area("PixiesetAdmin")]
         public async Task<IActionResult> Manage(string userId)
@@ -61,10 +69,10 @@ namespace Pixieset.Areas.PixiesetAdmin.Controllers
                 return View("NotFound");
             }
             ViewBag.userName = user.UserName;
-            var model = new List<ManageUserRole>();
+            var model = new List<ManageUserRoleVM>();
             foreach (var role in roleManager.Roles.ToList())
             {
-                var userRolesVM = new ManageUserRole
+                var userRolesVM = new ManageUserRoleVM
                 {
                     RoleId = role.Id,
                     RoleName = role.Name
@@ -86,8 +94,6 @@ namespace Pixieset.Areas.PixiesetAdmin.Controllers
 
                 
                 
-                  
-                    await userManager.AddToRoleAsync(user, Roles.Admin.ToString());
                 
              
 
@@ -100,20 +106,21 @@ namespace Pixieset.Areas.PixiesetAdmin.Controllers
         [HttpPost]
        
         [AutoValidateAntiforgeryToken]
-        public async Task<IActionResult> Manage(List<ManageUserRole> model, string userId)
+        public async Task<IActionResult> Manage(List<ManageUserRoleVM> model, string userId)
         {
             
             var user = await userManager.FindByIdAsync(userId);
          
             if (user == null)
             {
-                return RedirectToAction("Profile","Profiles");
+                return View();
             }
            
             var roles = await userManager.GetRolesAsync(user);
            
-            await userManager.UpdateAsync(user);
+         
             var result = await userManager.RemoveFromRolesAsync(user, roles.ToList());
+           
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "Cannot remove user existing roles");
@@ -125,18 +132,12 @@ namespace Pixieset.Areas.PixiesetAdmin.Controllers
                 ModelState.AddModelError("", "Cannot add selected roles to user");
                 return View(model);
             }
-            await userManager.UpdateAsync(user);
             
-            
-            return RedirectToAction("Index","DashBoard");
+            return RedirectToAction("Index");
         }
         
        
-        private async Task<List<string>> GetUserRoles(AppUser user)
-        {
-
-            return new List<string>(await userManager.GetRolesAsync(user));
-        }
+       
 
     }
 }

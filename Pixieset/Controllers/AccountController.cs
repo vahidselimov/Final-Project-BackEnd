@@ -234,7 +234,9 @@ namespace Pixieset.Controllers
             }
             IList<string> roles = await userManager.GetRolesAsync(user);
             string role = roles.FirstOrDefault(r => r.ToLower().Trim() == Roles.Member.ToString().ToLower().Trim());
-            if (role == null)
+            string adminRole = roles.FirstOrDefault(r => r.Trim().ToLower() == Roles.Admin.ToString().ToLower().Trim());
+            string superAdminRole = roles.FirstOrDefault(r => r.Trim().ToLower() == Roles.SuperAdmin.ToString().ToLower().Trim());
+            if (role == null|| adminRole==null||superAdminRole==null)
             {
                 ModelState.AddModelError("", "Something went wrong.Please contact with admins");
                 return View();
